@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.capstone.caledonia.CaledoniaController">
+   <children>
+      <ImageView fx:id="image" fitHeight="600.0" fitWidth="800.0">
+         <image>
+            <Image url="@images/background800x600.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="startButton" layoutX="63.0" layoutY="466.0" mnemonicParsing="false" onAction="#onStartButtonClick" prefHeight="62.0" prefWidth="83.0" text="Play" textAlignment="CENTER">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font></Button>
+      <Button fx:id="endButton" layoutX="650.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="62.0" prefWidth="75.0" text="Quit" textAlignment="CENTER">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font></Button>
+      <Label fx:id="title" layoutX="158.0" layoutY="88.0" prefHeight="110.0" prefWidth="330.0" text="Caledonia">
+         <font>
+            <Font name="Abaddon Bold Regular" size="48.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" layoutX="168.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/R_witch_emj.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
