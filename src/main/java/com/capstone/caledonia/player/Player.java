@@ -82,20 +82,18 @@ public class Player {
     }
 
     public void drawCards() {
-        int deckRemaining =  7 - this.deck.getCards().size();
-        if (deckRemaining > 0 && deckRemaining < 7) {
-            for (int i = 0; i < deckRemaining; i++) {
-                this.hand.addCard(this.deck.drawCard());
-            }
+        int deckSize = this.deck.getCards().size();
+        if (deckSize > 7) {
+            this.hand.drawHand(this.deck);
+        } else {
             this.resetDeckAndDiscard();
-        } else if (deckRemaining == 0) {
-            this.resetDeckAndDiscard();
+            this.hand.drawHand(this.deck);
         }
-        this.hand.drawHand(this.deck);
     }
 
     public void addToDiscard(ICard card) {
         this.discard.addCard(card);
+        this.hand.removeCard(card);
     }
 
     public void handleDeath() {
@@ -115,7 +113,20 @@ public class Player {
     }
 
     public void resetDeckAndDiscard() {
-        this.deck.setDeck(this.discard.getDiscard());
+        for (ICard card : this.discard.getDiscard()) {
+            this.deck.addCard(card);
+        }
         this.discard.emptyDiscard();
+
+    }
+
+    public void emptyHand() {
+        int size = this.hand.getHand().size();
+        for (int i = 0; i < size; i++) {
+            {
+                this.addToDiscard(this.hand.getHand().get(0));
+            }
+        }
+        this.hand.clearHand();
     }
 }

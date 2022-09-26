@@ -25,5 +25,9 @@ public class Deck {
         return card;
     }
 
+    public void addCard(ICard card) {
+        this.deck.add(card);
+    }
+
 
 }
