@@ -1,6 +1,10 @@
 package com.capstone.caledonia.player;
 
+import com.capstone.caledonia.card.CardBuilt;
+import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
+
+import java.util.ArrayList;
 
 public class Player {
     private int health;
@@ -13,14 +17,14 @@ public class Player {
     private Discard discard;
     private Hand hand;
 
-    public Player(int health, int energy, int treasure, int block, Deck deck) {
-        this.health = health;
+    public Player() {
+        this.health = 100;
         this.maxHealth = health;
-        this.energy = energy;
+        this.energy = 3;
         this.maxEnergy = energy;
-        this.treasure = treasure;
-        this.block = block;
-        this.deck = deck;
+        this.treasure = 0;
+        this.block = 0;
+        this.deck = generateStarterDeck();
         this.discard = new Discard();
         this.hand = new Hand();
     }
@@ -64,6 +68,24 @@ public class Player {
                 this.handleDeath();
             }
         }
+    }
+
+    private Deck generateStarterDeck(){
+        ArrayList<ICard> result = new ArrayList<>();
+        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE);
+        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR);
+        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL);
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(blockCard);
+        result.add(blockCard);
+        result.add(blockCard);
+        result.add(blockCard);
+        result.add(healCard);
+        return new Deck(result);
     }
 
     public void useCard(ICard card/*, Enemy enemy*/) {
