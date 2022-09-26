@@ -54,4 +54,15 @@ public class CardGenerated implements ICard{
     public void dealDamage(int dmg) {
 
     }
+
+    public int getDamage() {
+        if (this.cardEff.getType() == EffectType.DAMAGE) {
+            return this.cardDmg.getDamage() + this.cardEff.getEffect();
+        }
+        return this.cardDmg.getDamage();
+    }
+
+    public int getCost() {
+        return this.totalCost;
+    }
 }

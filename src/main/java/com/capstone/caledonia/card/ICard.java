@@ -8,4 +8,8 @@ public interface ICard {
     public void useEffect();
 
     public void dealDamage(int dmg);
+
+    public int getCost();
+
+    public int getDamage();
 }

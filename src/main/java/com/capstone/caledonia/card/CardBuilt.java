@@ -53,5 +53,12 @@ public class CardBuilt implements ICard{
     public void dealDamage(int dmg /*Enemy enemy*/) {
 
     }
+
+    public int getDamage() {
+        if (this.type == EffectType.DAMAGE) {
+            return this.dmg + this.effect;
+        }
+        return this.dmg;
+    }
 }
 

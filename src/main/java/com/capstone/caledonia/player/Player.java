@@ -56,11 +56,17 @@ public class Player {
             dmg -= this.block;
             this.block = 0;
             this.health -= dmg;
+            if (this.health <= 0 ) {
+                this.handleDeath();
+            }
         }
     }
 
     public void useCard(ICard card/*, Enemy enemy*/) {
         if (this.hand.getHand().contains(card)) {
+//            if (card.getDamage() > enemy.getHealth()) {
+//                enemy.handleDeath
+//            }
             this.hand.removeCard(card);
             this.addToDiscard(card);
             card.useCard(/*enemy*/);
@@ -73,5 +79,9 @@ public class Player {
 
     public void addToDiscard(ICard card) {
         this.discard.addCard(card);
+    }
+
+    public void handleDeath() {
+        //do something
     }
 }
