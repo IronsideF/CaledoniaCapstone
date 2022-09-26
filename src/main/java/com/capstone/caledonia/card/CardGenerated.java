@@ -1,5 +1,7 @@
 package com.capstone.caledonia.card;
 
+import com.capstone.caledonia.player.Player;
+
 public class CardGenerated implements ICard{
 
     private CardDmg cardDmg;
@@ -29,25 +31,14 @@ public class CardGenerated implements ICard{
         return this.cardDmg.getCost() + this.cardEff.getCost();
     }
 
-    public void useCard() {
-        //attack enemy w/ card damage
-        //use the effect of the card
-        //reduce the player energy by the cost of the card
-    }
-
-    public void discardCard() {
-        //add the card to the discard pile and remove it from the players hand
-
-    }
-
-    public void useEffect() {
+    public void useEffect(Player player) {
         if (this.cardEff.getType() == EffectType.ARMOUR) {
-            //add armour to the player, equal to effect
+            player.addArmour(this.cardEff.getEffect());
         } else if (this.cardEff.getType() == EffectType.DAMAGE) {
             int dmg = this.cardDmg.getDamage() + this.cardEff.getEffect();
             this.dealDamage(dmg);
         } else {
-            //heal the player equal to the effect
+            player.healHealth(this.cardEff.getEffect());
         }
     }
 

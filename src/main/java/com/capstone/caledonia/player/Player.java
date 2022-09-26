@@ -4,7 +4,9 @@ import com.capstone.caledonia.card.ICard;
 
 public class Player {
     private int health;
+    private int maxHealth;
     private int energy;
+    private int maxEnergy;
     private int treasure;
     private int block;
     private Deck deck;
@@ -13,7 +15,9 @@ public class Player {
 
     public Player(int health, int energy, int treasure, int block, Deck deck) {
         this.health = health;
+        this.maxHealth = health;
         this.energy = energy;
+        this.maxEnergy = energy;
         this.treasure = treasure;
         this.block = block;
         this.deck = deck;
@@ -64,16 +68,29 @@ public class Player {
 
     public void useCard(ICard card/*, Enemy enemy*/) {
         if (this.hand.getHand().contains(card)) {
+            if (this.energy > card.getCost()) {
 //            if (card.getDamage() > enemy.getHealth()) {
 //                enemy.handleDeath
+//            } else {
+//              enemy.takeDamage(card.getDamage());
 //            }
             this.hand.removeCard(card);
             this.addToDiscard(card);
-            card.useCard(/*enemy*/);
+            this.energy -= card.getCost();
+            }
         }
     }
 
     public void drawCards() {
+        int deckRemaining =  7 - this.deck.getCards().size();
+        if (deckRemaining > 0 && deckRemaining < 7) {
+            for (int i = 0; i < deckRemaining; i++) {
+                this.hand.addCard(this.deck.drawCard());
+            }
+            this.resetDeckAndDiscard();
+        } else if (deckRemaining == 0) {
+            this.resetDeckAndDiscard();
+        }
         this.hand.drawHand(this.deck);
     }
 
@@ -83,5 +100,22 @@ public class Player {
 
     public void handleDeath() {
         //do something
+    }
+
+    public void addArmour(int armour) {
+        this.block += armour;
+    }
+
+    public void healHealth(int heal) {
+        if ((this.health + heal) >= this.maxHealth) {
+            this.health = this.maxHealth;
+        } else {
+        this.health += heal;
+        }
+    }
+
+    public void resetDeckAndDiscard() {
+        this.deck.setDeck(this.discard.getDiscard());
+        this.discard.emptyDiscard();
     }
 }

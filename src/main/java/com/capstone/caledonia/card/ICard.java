@@ -1,13 +1,9 @@
 package com.capstone.caledonia.card;
 
+import com.capstone.caledonia.player.Player;
+
 public interface ICard {
-    public void useCard();
-
-    public void discardCard();
-
-    public void useEffect();
-
-    public void dealDamage(int dmg);
+    public void useEffect(Player player);
 
     public int getCost();
 

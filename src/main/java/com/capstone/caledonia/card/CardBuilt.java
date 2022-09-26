@@ -1,5 +1,9 @@
 package com.capstone.caledonia.card;
 
+import com.capstone.caledonia.player.Deck;
+import com.capstone.caledonia.player.Hand;
+import com.capstone.caledonia.player.Player;
+
 public class CardBuilt implements ICard{
     private int dmg;
     private EffectType type;
@@ -29,24 +33,14 @@ public class CardBuilt implements ICard{
         return cost;
     }
 
-    public void useCard(/*Enemy enemy, Hand hand, Deck deck, Player player */) {
-        //attack enemy w/ card damage affected by the effect of the card
-        //reduce the player energy by the cost of the card
-    }
-
-    public void discardCard(/* Hand hand, Deck deck */) {
-        //add the card to the discard pile and remove it from the players hand
-
-    }
-
-    public void useEffect() {
+    public void useEffect(Player player) {
         if (this.type == EffectType.ARMOUR) {
-            //add armour to the player, equal to effect
+            player.addArmour(this.effect);
         } else if (this.type == EffectType.DAMAGE) {
             this.dmg += this.effect;
             this.dealDamage(dmg);
         } else {
-            //heal the player equal to the effect
+            player.healHealth(this.effect);
         }
     }
 
