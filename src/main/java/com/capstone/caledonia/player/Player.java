@@ -62,11 +62,16 @@ public class Player {
     public void useCard(ICard card/*, Enemy enemy*/) {
         if (this.hand.getHand().contains(card)) {
             this.hand.removeCard(card);
+            this.addToDiscard(card);
             card.useCard(/*enemy*/);
         }
     }
 
     public void drawCards() {
         this.hand.drawHand(this.deck);
+    }
+
+    public void addToDiscard(ICard card) {
+        this.discard.addCard(card);
     }
 }
