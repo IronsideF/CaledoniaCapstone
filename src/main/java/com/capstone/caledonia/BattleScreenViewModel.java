@@ -1,8 +1,11 @@
 package com.capstone.caledonia;
 
+import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.player.Player;
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
+
+import java.util.ArrayList;
 
 
 public class BattleScreenViewModel {
@@ -48,14 +51,6 @@ public class BattleScreenViewModel {
     public DoubleProperty enemyHealthProperty(){
         return enemyHealth;
     }
-
-//    public ArrayList<Card> getPlayerHand() {
-//        return playerHand;
-//    }
-//
-//    public void setPlayerHand(ArrayList<Card> playerHand) {
-//        this.playerHand = playerHand;
-//    }
 
     public Image getPlayerSprite() {
         return playerSprite.get();
@@ -121,5 +116,12 @@ public class BattleScreenViewModel {
 
     public void setHandCount(String handCount) {
         this.handCount.set(handCount);
+    }
+    public ArrayList<Image> generateHandImages(){
+        ArrayList<Image> result = new ArrayList<>();
+        for (ICard card : player.getHand().getHand()){
+            result.add(card.getCardImage());
+        }
+        return result;
     }
 }

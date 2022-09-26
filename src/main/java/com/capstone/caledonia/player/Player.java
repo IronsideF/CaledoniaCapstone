@@ -3,8 +3,11 @@ package com.capstone.caledonia.player;
 import com.capstone.caledonia.card.CardBuilt;
 import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Player {
     private int health;
@@ -71,10 +74,11 @@ public class Player {
     }
 
     private Deck generateStarterDeck(){
+        Random rand = new Random();
         ArrayList<ICard> result = new ArrayList<>();
-        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE);
-        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR);
-        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL);
+        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm()));
+        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm()));
+        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm()));
         result.add(dmgCard);
         result.add(dmgCard);
         result.add(dmgCard);
@@ -85,6 +89,7 @@ public class Player {
         result.add(blockCard);
         result.add(blockCard);
         result.add(healCard);
+        Collections.shuffle(result);
         return new Deck(result);
     }
 

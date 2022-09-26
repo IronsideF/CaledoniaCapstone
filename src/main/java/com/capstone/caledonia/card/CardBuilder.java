@@ -37,7 +37,7 @@ public class CardBuilder {
         return this.cardEffs.get(i);
     }
 
-    public CardGenerated buildCard() {
-        return new CardGenerated(this.getRandomDmg(), this.getRandomEff());
-    }
+//    public CardGenerated buildCard() {
+//        return new CardGenerated(this.getRandomDmg(), this.getRandomEff());
+//    }
 }

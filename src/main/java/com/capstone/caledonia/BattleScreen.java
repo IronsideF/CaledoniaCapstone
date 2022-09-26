@@ -5,10 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+
+import java.util.ArrayList;
 
 public class BattleScreen extends AnchorPane{
     @FXML
@@ -47,6 +50,7 @@ public class BattleScreen extends AnchorPane{
         loader.setRoot(this);
         loader.load();
         bindViewModel();
+        cardBox.getChildren().addAll(generateHandImageViews());
     }
 
     private void bindViewModel(){
@@ -62,6 +66,13 @@ public class BattleScreen extends AnchorPane{
     @FXML
     protected void onQuitButtonClick(){
         Platform.exit();
+    }
+    private ArrayList<ImageView> generateHandImageViews(){
+        ArrayList<ImageView> result = new ArrayList<>();
+        for (Image cardImage: viewModel.generateHandImages()){
+            result.add(new ImageView(cardImage));
+        }
+        return result;
     }
 
 
