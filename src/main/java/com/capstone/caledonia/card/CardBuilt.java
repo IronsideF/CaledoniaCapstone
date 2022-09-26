@@ -29,7 +29,7 @@ public class CardBuilt implements ICard{
         return cost;
     }
 
-    public void useCard(/*Enemy enemy, Hand hand, Deck deck */) {
+    public void useCard(/*Enemy enemy, Hand hand, Deck deck, Player player */) {
         //attack enemy w/ card damage affected by the effect of the card
         //reduce the player energy by the cost of the card
     }
