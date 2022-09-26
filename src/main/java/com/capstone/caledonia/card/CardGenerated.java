@@ -39,4 +39,19 @@ public class CardGenerated implements ICard{
         //add the card to the discard pile and remove it from the players hand
 
     }
+
+    public void useEffect() {
+        if (this.cardEff.getType() == EffectType.ARMOUR) {
+            //add armour to the player, equal to effect
+        } else if (this.cardEff.getType() == EffectType.DAMAGE) {
+            int dmg = this.cardDmg.getDamage() + this.cardEff.getEffect();
+            this.dealDamage(dmg);
+        } else {
+            //heal the player equal to the effect
+        }
+    }
+
+    public void dealDamage(int dmg) {
+
+    }
 }

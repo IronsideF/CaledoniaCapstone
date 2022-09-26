@@ -4,4 +4,8 @@ public interface ICard {
     public void useCard();
 
     public void discardCard();
+
+    public void useEffect();
+
+    public void dealDamage(int dmg);
 }
