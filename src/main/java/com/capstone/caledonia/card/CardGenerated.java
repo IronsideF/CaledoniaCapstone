@@ -28,4 +28,15 @@ public class CardGenerated implements ICard{
     public int findTotalCost() {
         return this.cardDmg.getCost() + this.cardEff.getCost();
     }
+
+    public void useCard() {
+        //attack enemy w/ card damage
+        //use the effect of the card
+        //reduce the player energy by the cost of the card
+    }
+
+    public void discardCard() {
+        //add the card to the discard pile and remove it from the players hand
+
+    }
 }
