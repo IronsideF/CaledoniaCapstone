@@ -5,4 +5,6 @@ import com.capstone.caledonia.enemy.Enemy;
 
 public interface INode {
     Enemy getContents();
+
+    int getTreasure();
 }
