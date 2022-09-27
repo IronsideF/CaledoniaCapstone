@@ -3,6 +3,7 @@ package com.capstone.caledonia.player;
 import com.capstone.caledonia.card.CardBuilt;
 import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
+import com.capstone.caledonia.enemy.Enemy;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -76,9 +77,9 @@ public class Player {
     private Deck generateStarterDeck(){
         Random rand = new Random();
         ArrayList<ICard> result = new ArrayList<>();
-        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm()));
-        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm()));
-        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm()));
+        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE/*, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm())*/);
+        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR/*, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm())*/);
+        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL/*, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm())*/);
         result.add(dmgCard);
         result.add(dmgCard);
         result.add(dmgCard);
@@ -93,14 +94,10 @@ public class Player {
         return new Deck(result);
     }
 
-    public void useCard(ICard card/*, Enemy enemy*/) {
+    public void useCard(ICard card, Enemy enemy) {
         if (this.hand.getHand().contains(card)) {
             if (this.energy > card.getCost()) {
-//            if (card.getDamage() > enemy.getHealth()) {
-//                enemy.handleDeath
-//            } else {
-//              enemy.takeDamage(card.getDamage());
-//            }
+               card.useEffect(this, enemy);
             this.hand.removeCard(card);
             this.addToDiscard(card);
             this.energy -= card.getCost();
@@ -155,5 +152,10 @@ public class Player {
             }
         }
         this.hand.clearHand();
+    }
+
+    public void resetBlockAndEnergy() {
+        this.block = 0;
+        this.energy = 100;
     }
 }
