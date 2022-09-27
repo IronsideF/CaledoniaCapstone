@@ -150,4 +150,32 @@ public class PlayerTesting {
         }
         assertTrue(enemy.getIsDead());
     }
+
+    @Test
+    public void playerCanGetBlock() {
+        CardBuilt block = new CardBuilt(1, 10, 1, EffectType.ARMOUR);
+        player.getHand().addCard(block);
+        player.useCard(block, enemy);
+        assertEquals(10, player.getBlock());
+    }
+
+    @Test
+    public void playerCanHeal() {
+        CardBuilt heal = new CardBuilt(1, 10, 1, EffectType.HEAL);
+        player.getHand().addCard(heal);
+        enemy.attackPlayer(player);
+        int health = player.getHealth();
+        player.useCard(heal, enemy);
+        assertNotEquals(health, player.getHealth());
+    }
+    
+    @Test 
+    public void blockWorks() {
+        CardBuilt block = new CardBuilt(1, 10, 1, EffectType.ARMOUR);
+        player.getHand().addCard(block);
+        player.useCard(block, enemy);
+        enemy.attackPlayer(player);
+        assertEquals(0, player.getBlock());
+        assertEquals(90, player.getHealth());
+    }
 }

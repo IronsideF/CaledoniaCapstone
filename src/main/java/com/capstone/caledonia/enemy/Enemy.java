@@ -23,9 +23,9 @@ public class Enemy {
     }
 
     private ArrayList<Attack> generateAttacks() {
-        Attack attack1 = new Attack(10, EffectType.DAMAGE, 10);
-        Attack attack2 = new Attack(20, EffectType.DAMAGE, 5);
-        Attack attack3 = new Attack(30, EffectType.HEAL, 10);
+        Attack attack1 = new Attack(20, EffectType.ARMOUR, 10);
+        Attack attack2 = new Attack(20, EffectType.DAMAGE, 0);
+        Attack attack3 = new Attack(20, EffectType.HEAL, 10);
         ArrayList<Attack> attacks = new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
         return attacks;
     }
