@@ -196,6 +196,11 @@ public class Player {
         resetDeckAndDiscard();
         resetBlockAndEnergy();
     }
+    public void endTurn(){
+        emptyHand();
+        resetBlockAndEnergy();
+        drawCards();
+    }
 
     public void resetBlockAndEnergy() {
         this.block = 0;

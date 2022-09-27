@@ -9,12 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.util.converter.NumberStringConverter;
 
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import static javafx.beans.binding.Bindings.bindBidirectional;
@@ -66,9 +66,9 @@ public class BattleScreen extends AnchorPane{
         enemyHealth.progressProperty().bindBidirectional(viewModel.enemyHealthProperty());
         playerSprite.imageProperty().bindBidirectional(viewModel.playerSpriteProperty());
         enemySprite.imageProperty().bindBidirectional(viewModel.enemySpriteProperty());
-        deckCount.textProperty().bindBidirectional(viewModel.deckCountProperty());
-        discardCount.textProperty().bindBidirectional(viewModel.discardCountProperty());
-        handCount.textProperty().bindBidirectional(viewModel.handCountProperty());
+        Bindings.bindBidirectional(handCount.textProperty(), viewModel.handCountProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(deckCount.textProperty(), viewModel.deckCountProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(discardCount.textProperty(), viewModel.discardCountProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(
                 energy.textProperty(),
                 viewModel.energyProperty(),
@@ -85,27 +85,40 @@ public class BattleScreen extends AnchorPane{
         for (Image cardImage: viewModel.generateHandImages()){
             ImageView cardDisplay = new ImageView(cardImage);
             cardDisplay.setId(String.valueOf(i));
-            cardDisplay.setOnMouseClicked(this::handleCardClick);
+            cardDisplay.setOnMouseClicked(event -> {
+                try {
+                    handleCardClick(event);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
             i++;
             result.add(cardDisplay);
         }
         return result;
     }
 
-    private void handleCardClick(Event event){
+    private void handleCardClick(Event event) throws Exception{
         String imageID = ((ImageView)event.getSource()).getId();
-        viewModel.useCard(Integer.parseInt(imageID));
-        rebuildHand();
+        if(!viewModel.useCard(Integer.parseInt(imageID))){
+        rebuildHand();} else {
+                VictoryScreen vicScreen = new VictoryScreen("Congratulations!");
+                getScene().setRoot(vicScreen);
+        }
+
     }
     @FXML
-    private void handleConfirmClick(){
-        viewModel.handleNodeChange();
-        rebuildHand();
+    private void handleConfirmClick()throws Exception{
+        if(viewModel.endTurn()){
+            VictoryScreen vicScreen = new VictoryScreen("Defeat!");
+            getScene().setRoot(vicScreen);
+        } else {
+            rebuildHand();
+        }
+
     }
     public void rebuildHand(){
         cardBox.getChildren().clear();
         cardBox.getChildren().addAll(generateHandImageViews());
     }
-
-
 }

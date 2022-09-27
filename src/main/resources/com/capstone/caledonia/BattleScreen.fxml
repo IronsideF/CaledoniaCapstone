@@ -32,7 +32,7 @@
       <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="100.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
          </ImageView>
       <ProgressBar fx:id="enemyHealth" layoutX="447.0" layoutY="197.0" prefWidth="200.0" progress="1.0" />
-      <Button fx:id="confirmButton" layoutX="685.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleConfirmClick" prefHeight="42.0" prefWidth="83.0" text="Confirm" />
+      <Button fx:id="confirmButton" layoutX="685.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleConfirmClick" prefHeight="42.0" prefWidth="83.0" text="End Turn" />
       <ProgressBar fx:id="playerHealth" layoutX="45.0" layoutY="254.0" prefWidth="200.0" progress="1.0" />
       <Button fx:id="deckButton" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" text="Deck" />
       <Button fx:id="mapButton" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" text="Map" />
