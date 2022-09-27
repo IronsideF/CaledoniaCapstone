@@ -32,7 +32,7 @@ public class Game {
     }
     public void startBattle(){
         player.reset();
-        player.drawCards();
+        player.drawCards(4);
     }
 
     public boolean advanceToNextNode(){
@@ -50,6 +50,7 @@ public class Game {
     }
 
     public boolean endTurn(){
+        gameMap.getCurrentNode().getContents().resetBlock();
         gameMap.getCurrentNode().getContents().attackPlayer(player);
         player.endTurn();
         return player.getDead();

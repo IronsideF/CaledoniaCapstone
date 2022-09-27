@@ -30,11 +30,9 @@ public class Hand {
         this.hand.clear();
     }
 
-    public void drawHand(Deck deck) {
-        for (int i = 0; i < 7; i ++) {
+    public void drawToHand(Deck deck) {
             if (this.hand.size() < 7) {
                 this.hand.add(deck.drawCard());
             }
         }
-    }
 }

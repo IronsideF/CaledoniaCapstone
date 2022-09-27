@@ -31,8 +31,7 @@ public class StartUpScreen extends AnchorPane{
 
     @FXML
     protected void onStartButtonClick() throws Exception{
-        BattleScreen initialBattle = new BattleScreen();
-        getScene().setRoot(initialBattle);
+        getScene().setRoot(Game.getInstance().gameMap.getCurrentNode().buildView());
     }
     @FXML
     protected void handleCloseButtonAction(ActionEvent event) {

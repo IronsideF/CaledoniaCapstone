@@ -10,8 +10,14 @@ import java.util.ArrayList;
 
 
 public class BattleScreenViewModel {
-    private SimpleDoubleProperty playerHealth = new SimpleDoubleProperty();
-    private SimpleDoubleProperty enemyHealth = new SimpleDoubleProperty();
+    private DoubleProperty playerHealth = new SimpleDoubleProperty();
+    private IntegerProperty playerHealthInt = new SimpleIntegerProperty();
+    private IntegerProperty playerMaxHealthInt = new SimpleIntegerProperty();
+    private IntegerProperty playerBlock = new SimpleIntegerProperty();
+    private DoubleProperty enemyHealth = new SimpleDoubleProperty();
+    private IntegerProperty enemyHealthInt = new SimpleIntegerProperty();
+    private IntegerProperty enemyMaxHealthInt = new SimpleIntegerProperty();
+    private IntegerProperty enemyBlock = new SimpleIntegerProperty();
     private Game game = Game.getInstance();
     private ObjectProperty<Image> playerSprite = new SimpleObjectProperty<>();
     private ObjectProperty<Image> enemySprite = new SimpleObjectProperty<>();
@@ -19,6 +25,7 @@ public class BattleScreenViewModel {
     private IntegerProperty discardCount = new SimpleIntegerProperty();
     private IntegerProperty handCount = new SimpleIntegerProperty();
     private IntegerProperty energy = new SimpleIntegerProperty();
+    private IntegerProperty maxEnergy = new SimpleIntegerProperty();
 
     public BattleScreenViewModel() {
         game.startBattle();
@@ -118,6 +125,91 @@ public class BattleScreenViewModel {
     public void setHandCount(Integer handCount) {
         this.handCount.set(handCount);
     }
+
+    public int getPlayerHealthInt() {
+        return playerHealthInt.get();
+    }
+
+    public IntegerProperty playerHealthIntProperty() {
+        return playerHealthInt;
+    }
+
+    public void setPlayerHealthInt(int playerHealthInt) {
+        this.playerHealthInt.set(playerHealthInt);
+    }
+
+    public int getPlayerMaxHealthInt() {
+        return playerMaxHealthInt.get();
+    }
+
+    public IntegerProperty playerMaxHealthIntProperty() {
+        return playerMaxHealthInt;
+    }
+
+    public void setPlayerMaxHealthInt(int playerMaxHealthInt) {
+        this.playerMaxHealthInt.set(playerMaxHealthInt);
+    }
+
+    public int getPlayerBlock() {
+        return playerBlock.get();
+    }
+
+    public IntegerProperty playerBlockProperty() {
+        return playerBlock;
+    }
+
+    public void setPlayerBlock(int playerBlock) {
+        this.playerBlock.set(playerBlock);
+    }
+
+    public int getEnemyHealthInt() {
+        return enemyHealthInt.get();
+    }
+
+    public IntegerProperty enemyHealthIntProperty() {
+        return enemyHealthInt;
+    }
+
+    public void setEnemyHealthInt(int enemyHealthInt) {
+        this.enemyHealthInt.set(enemyHealthInt);
+    }
+
+    public int getEnemyMaxHealthInt() {
+        return enemyMaxHealthInt.get();
+    }
+
+    public IntegerProperty enemyMaxHealthIntProperty() {
+        return enemyMaxHealthInt;
+    }
+
+    public void setEnemyMaxHealthInt(int enemyMaxHealthInt) {
+        this.enemyMaxHealthInt.set(enemyMaxHealthInt);
+    }
+
+    public int getEnemyBlock() {
+        return enemyBlock.get();
+    }
+
+    public IntegerProperty enemyBlockProperty() {
+        return enemyBlock;
+    }
+
+    public void setEnemyBlock(int enemyBlock) {
+        this.enemyBlock.set(enemyBlock);
+    }
+
+    public int getMaxEnergy() {
+        return maxEnergy.get();
+    }
+
+    public IntegerProperty maxEnergyProperty() {
+        return maxEnergy;
+    }
+
+    public void setMaxEnergy(int maxEnergy) {
+        this.maxEnergy.set(maxEnergy);
+    }
+
     public ArrayList<Image> generateHandImages(){
         ArrayList<Image> result = new ArrayList<>();
         for (ICard card : game.player.getHand().getHand()){
@@ -129,8 +221,14 @@ public class BattleScreenViewModel {
 
     public void updateHP(){
         Enemy enemy = game.gameMap.getCurrentNode().getContents();
-        setEnemyHealth(HPConverter.convertHPtoProgress(enemy.getHealth(), enemy.getMaxHealth()));
-        setPlayerHealth(HPConverter.convertHPtoProgress(game.player.getHealth(), game.player.getMaxHealth()));
+        setPlayerHealthInt(game.player.getHealth());
+        setPlayerMaxHealthInt(game.player.getMaxHealth());
+        setEnemyHealthInt(enemy.getHealth());
+        setEnemyMaxHealthInt(enemy.getMaxHealth());
+        setEnemyHealth(HPConverter.convertHPtoProgress(getEnemyHealthInt(), getEnemyMaxHealthInt()));
+        setPlayerHealth(HPConverter.convertHPtoProgress(getPlayerHealthInt(), getPlayerMaxHealthInt()));
+        setEnemyBlock(enemy.getBlock());
+
     }
     public void updateCardInfo(){
         setDeckCount(game.player.getDeck().getCards().size());
@@ -142,12 +240,14 @@ public class BattleScreenViewModel {
         setPlayerSprite(game.player.getPlayerSprite());
         setEnemySprite(game.gameMap.getCurrentNode().getContents().getEnemySprite());
     }
-    public void updateEnergy(){
+    public void updateEnergyAndBlock(){
         setEnergy(game.player.getEnergy());
+        setMaxEnergy(game.player.getMaxEnergy());
+        setPlayerBlock(game.player.getBlock());
     }
     public void updateUI(){
         updateHP();
-        updateEnergy();
+        updateEnergyAndBlock();
         updateCardInfo();
         updateSprites();
     }

@@ -9,15 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.util.converter.NumberStringConverter;
 
 import java.util.ArrayList;
-
-import static javafx.beans.binding.Bindings.bindBidirectional;
 
 public class BattleScreen extends AnchorPane{
     @FXML
@@ -50,9 +47,16 @@ public class BattleScreen extends AnchorPane{
     private Text handCount;
     @FXML
     private Text energy;
+    @FXML private Text maxEnergy;
+    @FXML private Text playerHealthInt;
+    @FXML private Text playerMaxHealthInt;
+    @FXML private Text enemyHealthInt;
+    @FXML private Text enemyMaxHealthInt;
+    @FXML private Text playerBlock;
+    @FXML private Text enemyBlock;
 
     private final BattleScreenViewModel viewModel = new BattleScreenViewModel();
-    BattleScreen()throws Exception{
+    public BattleScreen()throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BattleScreen.fxml"));
         loader.setController(this);
         loader.setRoot(this);
@@ -66,6 +70,13 @@ public class BattleScreen extends AnchorPane{
         enemyHealth.progressProperty().bindBidirectional(viewModel.enemyHealthProperty());
         playerSprite.imageProperty().bindBidirectional(viewModel.playerSpriteProperty());
         enemySprite.imageProperty().bindBidirectional(viewModel.enemySpriteProperty());
+        Bindings.bindBidirectional(enemyBlock.textProperty(), viewModel.enemyBlockProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(playerBlock.textProperty(), viewModel.playerBlockProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(playerHealthInt.textProperty(), viewModel.playerHealthIntProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(playerMaxHealthInt.textProperty(), viewModel.playerMaxHealthIntProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(enemyMaxHealthInt.textProperty(), viewModel.enemyMaxHealthIntProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(enemyHealthInt.textProperty(), viewModel.enemyHealthIntProperty(), new NumberStringConverter());
+        Bindings.bindBidirectional(maxEnergy.textProperty(), viewModel.maxEnergyProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(handCount.textProperty(), viewModel.handCountProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(deckCount.textProperty(), viewModel.deckCountProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(discardCount.textProperty(), viewModel.discardCountProperty(), new NumberStringConverter());

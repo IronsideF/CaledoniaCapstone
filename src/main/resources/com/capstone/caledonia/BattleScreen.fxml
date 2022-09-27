@@ -16,14 +16,7 @@
             <Image url="@images/BattleBackground800x600.png" />
          </image>
       </ImageView>
-      <HBox fx:id="cardBox" layoutX="54.0" layoutY="443.0" prefHeight="131.0" prefWidth="612.0">
-         <children>
-            <Text fx:id="handCount" fill="#fcfcfc" strokeType="OUTSIDE" strokeWidth="0.0">
-               <font>
-                  <Font name="Abaddon Bold Regular" size="13.0" />
-               </font>
-            </Text>
-         </children></HBox>
+      <HBox fx:id="cardBox" layoutX="54.0" layoutY="443.0" prefHeight="131.0" prefWidth="612.0" />
       <HBox fx:id="enemyBox" alignment="BOTTOM_CENTER" layoutX="400.0" layoutY="240.0" prefHeight="193.0" prefWidth="293.0">
          <children>
             <ImageView fx:id="enemySprite">
@@ -47,10 +40,91 @@
             <Font name="Abaddon Bold Regular" size="13.0" />
          </font>
       </Text>
-      <Text fx:id="energy" fill="#fffefe" layoutX="123.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="55.21630859375">
+      <Text fx:id="handCount" fill="#fcfcfc" layoutX="119.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="21.0">
          <font>
-            <Font name="Abaddon Bold Regular" size="25.0" />
+            <Font name="Abaddon Bold Regular" size="13.0" />
          </font>
       </Text>
+      <HBox alignment="CENTER" layoutX="250.0" layoutY="395.0" prefHeight="34.0" prefWidth="68.0">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/PlayerBlockIcon.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="playerBlock" fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="360.0" layoutY="399.0" prefHeight="34.0" prefWidth="55.0">
+         <children>
+            <Text fx:id="enemyBlock" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="13.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/EnemyBlockIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="94.0" layoutY="248.0" prefHeight="34.0" prefWidth="103.0">
+         <children>
+            <Text fx:id="playerHealthInt" fill="#030000" strokeType="OUTSIDE" strokeWidth="0.0" text="cHP">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="13.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="playerMaxHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="mHP">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="480.0" layoutY="187.0" prefHeight="42.0" prefWidth="133.0">
+         <children>
+            <Text fx:id="enemyHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="cHP">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="13.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="enemyMaxHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="mHP">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="104.0" layoutY="186.0" prefHeight="42.0" prefWidth="94.0">
+         <children>
+            <Text fx:id="energy" fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="cEnergy" wrappingWidth="34.0">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="25.0" />
+               </font>
+            </Text>
+            <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="25.0" />
+               </font>
+            </Text>
+            <Text fx:id="maxEnergy" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="mEnergy">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
    </children>
 </fx:root>
