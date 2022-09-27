@@ -1,5 +1,6 @@
 package com.capstone.caledonia.map;
 
+import com.capstone.caledonia.Game;
 import com.capstone.caledonia.node.EnemyNode;
 import com.capstone.caledonia.node.INode;
 

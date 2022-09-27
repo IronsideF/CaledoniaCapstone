@@ -25,15 +25,15 @@ public class Enemy {
     }
 
     private ArrayList<Attack> generateAttacks() {
-        Attack attack1 = new Attack(20, EffectType.ARMOUR, 10);
-        Attack attack2 = new Attack(20, EffectType.DAMAGE, 0);
-        Attack attack3 = new Attack(20, EffectType.HEAL, 10);
+        Attack attack1 = new Attack(9, EffectType.ARMOUR, 6);
+        Attack attack2 = new Attack(13, EffectType.DAMAGE, 0);
+        Attack attack3 = new Attack(6, EffectType.HEAL, 7);
         ArrayList<Attack> attacks = new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
         return attacks;
     }
 
     public Enemy() {
-        this.health = 100;
+        this.health = 37;
         this.maxHealth = health;
         this.block = 0;
         this.attacks = generateAttacks();

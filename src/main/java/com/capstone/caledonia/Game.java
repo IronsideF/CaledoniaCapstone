@@ -35,6 +35,26 @@ public class Game {
         player.drawCards();
     }
 
+    public boolean advanceToNextNode(){
+        if (gameMap.getPlayerPosition()+1< gameMap.getNodes().size()){
+            gameMap.advance();
+            startBattle();
+            return false;
+        }
+        return true;
+    }
+
+    public void resetInstance(){
+        this.player = new Player();
+        this.gameMap = new GameMap();
+    }
+
+    public boolean endTurn(){
+        gameMap.getCurrentNode().getContents().attackPlayer(player);
+        player.endTurn();
+        return player.getDead();
+    }
+
 
     public void handleVictory(){
 

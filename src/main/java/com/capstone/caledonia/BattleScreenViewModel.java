@@ -12,25 +12,17 @@ import java.util.ArrayList;
 public class BattleScreenViewModel {
     private SimpleDoubleProperty playerHealth = new SimpleDoubleProperty();
     private SimpleDoubleProperty enemyHealth = new SimpleDoubleProperty();
-   private Game game = Game.getInstance();
+    private Game game = Game.getInstance();
     private ObjectProperty<Image> playerSprite = new SimpleObjectProperty<>();
     private ObjectProperty<Image> enemySprite = new SimpleObjectProperty<>();
-    private StringProperty deckCount = new SimpleStringProperty("");
-    private StringProperty discardCount = new SimpleStringProperty("");
-    private StringProperty handCount = new SimpleStringProperty("");
+    private IntegerProperty deckCount = new SimpleIntegerProperty();
+    private IntegerProperty discardCount = new SimpleIntegerProperty();
+    private IntegerProperty handCount = new SimpleIntegerProperty();
     private IntegerProperty energy = new SimpleIntegerProperty();
 
     public BattleScreenViewModel() {
-        game.player.drawCards();
-        Enemy enemy = game.gameMap.getCurrentNode().getContents();
-        setDeckCount(String.valueOf(game.player.getDeck().getCards().size()));
-        setDiscardCount(String.valueOf(game.player.getDiscard().getDiscard().size()));
-        setHandCount(String.valueOf(game.player.getHand().getHand().size()));
-        setEnemyHealth(HPConverter.convertHPtoProgress(enemy.getHealth(), enemy.getMaxHealth()));
-        setPlayerHealth(HPConverter.convertHPtoProgress(game.player.getHealth(), game.player.getMaxHealth()));
-        setPlayerSprite(game.player.getPlayerSprite());
-        setEnemySprite(game.gameMap.getCurrentNode().getContents().getEnemySprite());
-        setEnergy(game.player.getEnergy());
+        game.startBattle();
+        updateUI();
     }
 
     public double getPlayerHealth() {
@@ -91,39 +83,39 @@ public class BattleScreenViewModel {
         return enemySprite;
     }
 
-    public String getDeckCount() {
+    public Integer getDeckCount() {
         return deckCount.get();
     }
 
-    public StringProperty deckCountProperty() {
+    public IntegerProperty deckCountProperty() {
         return deckCount;
     }
 
-    public void setDeckCount(String deckCount) {
+    public void setDeckCount(Integer deckCount) {
         this.deckCount.set(deckCount);
     }
 
-    public String getDiscardCount() {
+    public Integer getDiscardCount() {
         return discardCount.get();
     }
 
-    public StringProperty discardCountProperty() {
+    public IntegerProperty discardCountProperty() {
         return discardCount;
     }
 
-    public void setDiscardCount(String discardCount) {
+    public void setDiscardCount(Integer discardCount) {
         this.discardCount.set(discardCount);
     }
 
-    public String getHandCount() {
+    public Integer getHandCount() {
         return handCount.get();
     }
 
-    public StringProperty handCountProperty() {
+    public IntegerProperty handCountProperty() {
         return handCount;
     }
 
-    public void setHandCount(String handCount) {
+    public void setHandCount(Integer handCount) {
         this.handCount.set(handCount);
     }
     public ArrayList<Image> generateHandImages(){
@@ -133,22 +125,50 @@ public class BattleScreenViewModel {
         }
         return result;
     }
-    public void useCard(int index){
-        boolean enemyDead = game.useCard(index);
+
+
+    public void updateHP(){
         Enemy enemy = game.gameMap.getCurrentNode().getContents();
         setEnemyHealth(HPConverter.convertHPtoProgress(enemy.getHealth(), enemy.getMaxHealth()));
         setPlayerHealth(HPConverter.convertHPtoProgress(game.player.getHealth(), game.player.getMaxHealth()));
-        setEnergy(game.player.getEnergy());
-        if (enemyDead){
-            handleNodeChange();
-        }
     }
-    public void handleNodeChange(){
-        game.gameMap.advance();
-        Enemy enemy = game.gameMap.getCurrentNode().getContents();
-        setEnemyHealth(HPConverter.convertHPtoProgress(enemy.getHealth(), enemy.getMaxHealth()));
-        setEnemySprite(enemy.getEnemySprite());
-        game.startBattle();
+    public void updateCardInfo(){
+        setDeckCount(game.player.getDeck().getCards().size());
+        setDiscardCount(game.player.getDiscard().getDiscard().size());
+        setHandCount(game.player.getHand().getHand().size());
+
+    }
+    public void updateSprites(){
+        setPlayerSprite(game.player.getPlayerSprite());
+        setEnemySprite(game.gameMap.getCurrentNode().getContents().getEnemySprite());
+    }
+    public void updateEnergy(){
         setEnergy(game.player.getEnergy());
+    }
+    public void updateUI(){
+        updateHP();
+        updateEnergy();
+        updateCardInfo();
+        updateSprites();
+    }
+    public boolean useCard(int index){
+        boolean enemyDead = game.useCard(index);
+        updateUI();
+        if (enemyDead){
+            return handleNodeChange();
+        }
+        else return false;
+    }
+    public boolean handleNodeChange(){
+        if(!game.advanceToNextNode()){
+        updateUI();
+        return false;}
+        game.handleVictory();
+        return true;
+    }
+    public boolean endTurn(){
+        boolean gameOver = game.endTurn();
+        updateUI();
+        return gameOver;
     }
 }
