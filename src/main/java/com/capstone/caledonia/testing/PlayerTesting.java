@@ -1,20 +1,20 @@
-//package com.capstone.caledonia.testing;
-//
-//import com.capstone.caledonia.card.*;
-//import com.capstone.caledonia.player.Deck;
-//import com.capstone.caledonia.player.Discard;
-//import com.capstone.caledonia.player.Hand;
-//import com.capstone.caledonia.player.Player;
-//import org.junit.Before;
-//import org.junit.Test;
-//
-//import static org.junit.Assert.assertEquals;
-//
-//import java.util.ArrayList;
-//
-//public class PlayerTesting {
-//
-//        Player player;
+package com.capstone.caledonia.testing;
+
+import com.capstone.caledonia.card.*;
+import com.capstone.caledonia.player.Deck;
+import com.capstone.caledonia.player.Discard;
+import com.capstone.caledonia.player.Hand;
+import com.capstone.caledonia.player.Player;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
+public class PlayerTesting {
+
+        Player player;
 //        Deck deck;
 //        CardDmg cardDmg1;
 //        CardDmg cardDmg2;
@@ -36,9 +36,9 @@
 //
 //        CardBuilder cardBuilder;
 //        ArrayList<ICard> cards;
-//
-//    @Before
-//    public void before() {
+
+    @Before
+    public void before() {
 //        cardBuilder = new CardBuilder();
 //        cardDmg1 = new CardDmg(1,1);
 //        cardDmg2 = new CardDmg(2,2);
@@ -78,42 +78,47 @@
 //        cards.add(cardGenerated10);
 //
 //        deck = new Deck(cards);
-//
-//        player = new Player(100, 100, 0,0,  deck);
-//
-//    }
-//    @Test
-//    public void playerHasCards() {
-//        assertEquals(10, player.getDeck().getCards().size());
-//    }
-//
-//    @Test
-//    public void playerCanDrawCards() {
-//        player.drawCards();
-//        assertEquals(7,player.getHand().getHand().size());
-//    }
-//
+
+        player = new Player();
+
+    }
+    @Test
+    public void playerHasCards() {
+        assertEquals(10, player.getDeck().getCards().size());
+    }
+
+    @Test
+    public void playerCanDrawCards() {
+        player.drawCards();
+        assertEquals(7,player.getHand().getHand().size());
+    }
+
 //    @Test
 //    public void playerCanRemoveCardFromHand() {
 //        player.drawCards();
 //        player.addToDiscard(cardGenerated1);
 //        assertEquals(6, player.getHand().getHand().size());
 //    }
-//
-//    @Test
-//    public void playerCanEmptyHand() {
-//        player.drawCards();
-//        player.emptyHand();
-//        assertEquals(0, player.getHand().getHand().size());
-//        assertEquals(3, player.getDeck().getCards().size());
-//        assertEquals(7, player.getDiscard().getDiscard().size());
-//    }
-//
-//    @Test
-//    public void playerCanResetDiscardAndDeck() {
-//        player.drawCards();
-//        player.emptyHand();
-//        player.drawCards();
-//        assertEquals(7, player.getHand().getHand().size());
-//    }
-//}
+
+    @Test
+    public void playerCanEmptyHand() {
+        player.drawCards();
+        player.emptyHand();
+        assertEquals(0, player.getHand().getHand().size());
+        assertEquals(3, player.getDeck().getCards().size());
+        assertEquals(7, player.getDiscard().getDiscard().size());
+    }
+
+    @Test
+    public void playerCanResetDiscardAndDeck() {
+        player.drawCards();
+        player.emptyHand();
+        player.drawCards();
+        assertEquals(7, player.getHand().getHand().size());
+    }
+
+    @Test
+    public void playerCanDealDamage() {
+
+    }
+}
