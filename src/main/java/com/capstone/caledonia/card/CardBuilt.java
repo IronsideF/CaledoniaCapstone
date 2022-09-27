@@ -42,10 +42,10 @@ public class CardBuilt implements ICard{
             player.addArmour(this.effect);
         } else if (this.type == EffectType.DAMAGE) {
             this.dmg += this.effect;
-            this.dealDamage(this.dmg, enemy);
         } else {
             player.healHealth(this.effect);
         }
+            this.dealDamage(this.dmg, enemy);
     }
 
     public void dealDamage(int dmg, Enemy enemy) {
