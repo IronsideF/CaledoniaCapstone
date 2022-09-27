@@ -20,6 +20,7 @@ public class Player {
     private Deck deck;
     private Discard discard;
     private Hand hand;
+    private Boolean isDead;
 
     public Player() {
         this.health = 100;
@@ -31,6 +32,7 @@ public class Player {
         this.deck = generateStarterDeck();
         this.discard = new Discard();
         this.hand = new Hand();
+        this.isDead = false;
     }
 
     public Player(int health, int energy, Deck deck) {
@@ -43,6 +45,7 @@ public class Player {
         this.block = 0;
         this.discard = new Discard();
         this.hand = new Hand();
+        this.isDead = false;
     }
 
     public int getHealth() {
@@ -63,6 +66,10 @@ public class Player {
 
     public Deck getDeck() {
         return deck;
+    }
+
+    public Boolean getDead() {
+        return isDead;
     }
 
     public Discard getDiscard() {
@@ -133,7 +140,7 @@ public class Player {
     }
 
     public void handleDeath() {
-        //do something
+        this.isDead = true;
     }
 
     public void addArmour(int armour) {

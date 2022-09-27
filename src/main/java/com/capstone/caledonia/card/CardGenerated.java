@@ -34,14 +34,15 @@ public class CardGenerated implements ICard{
     }
 
     public void useEffect(Player player, Enemy enemy) {
+        int dmg = this.cardDmg.getDamage();
         if (this.cardEff.getType() == EffectType.ARMOUR) {
             player.addArmour(this.cardEff.getEffect());
         } else if (this.cardEff.getType() == EffectType.DAMAGE) {
-            int dmg = this.cardDmg.getDamage() + this.cardEff.getEffect();
-            this.dealDamage(dmg, enemy);
+            dmg += this.cardEff.getEffect();
         } else {
             player.healHealth(this.cardEff.getEffect());
         }
+            this.dealDamage(dmg, enemy);
     }
 
     public void dealDamage(int dmg, Enemy enemy) {

@@ -42,7 +42,7 @@ public class PlayerTesting {
     @Before
     public void before() {
         cardBuilder = new CardBuilder();
-        cardDmg1 = new CardDmg(10,1);
+        cardDmg1 = new CardDmg(20,1);
         cardDmg2 = new CardDmg(20,2);
         cardDmg3 = new CardDmg(30,2);
         cardEff1 = new CardEff(10,1, EffectType.HEAL);
@@ -132,5 +132,22 @@ public class PlayerTesting {
     public void playerCanTakeDamage() {
         enemy.attackPlayer(player);
         assertNotEquals(100, player.getHealth());
+    }
+
+    @Test
+    public void playerCanDie() {
+        while (player.getHealth() > 0) {
+            enemy.attackPlayer(player);
+        }
+        assertTrue(player.getDead());
+    }
+
+    @Test
+    public void enemyCanDie() {
+        player.drawCards();
+        while (enemy.getHealth() > 0) {
+            player.useCard(player.getHand().getHand().get(0), enemy);
+        }
+        assertTrue(enemy.getIsDead());
     }
 }
