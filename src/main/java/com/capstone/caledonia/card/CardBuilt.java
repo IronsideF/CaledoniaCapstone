@@ -13,12 +13,12 @@ public class CardBuilt implements ICard{
     private int cost;
     private Image cardImage;
 
-    public CardBuilt(int dmg, int effect, int cost, EffectType type/*, Image cardImage*/) {
+    public CardBuilt(int dmg, int effect, int cost, EffectType type, Image cardImage) {
         this.dmg = dmg;
         this.effect = effect;
         this.cost = cost;
         this.type = type;
-//        this.cardImage = cardImage;
+        this.cardImage = cardImage;
     }
 
     public int getDmg() {
