@@ -2,6 +2,7 @@ package com.capstone.caledonia.enemy;
 
 import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.player.Player;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,10 +10,11 @@ import java.util.Arrays;
 public class Enemy {
 
     private int health;
+    private int maxHealth;
     private int block;
+    private Image enemySprite;
     private ArrayList<Attack> attacks;
     private Boolean isDead;
-    private int maxHealth;
 
     public Enemy(int health, int block, ArrayList<Attack> attacks, Boolean isDead) {
         this.health = health;
@@ -32,21 +34,48 @@ public class Enemy {
 
     public Enemy() {
         this.health = 100;
+        this.maxHealth = health;
         this.block = 0;
         this.attacks = generateAttacks();
         this.isDead = false;
+        this.enemySprite = new Image(getClass().getResource("/SquidSprite.png").toExternalForm());
     }
 
     public int getHealth() {
         return health;
     }
 
+    public ArrayList<Attack> getAttacks() {
+        return attacks;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public int getBlock() {
         return block;
     }
 
-    public ArrayList<Attack> getAttacks() {
-        return attacks;
+    public void setBlock(int block) {
+        this.block = block;
+    }
+
+
+    public Image getEnemySprite() {
+        return enemySprite;
+    }
+
+    public void setEnemySprite(Image enemySprite) {
+        this.enemySprite = enemySprite;
     }
 
     public void attackPlayer(Player player) {

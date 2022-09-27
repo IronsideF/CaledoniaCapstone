@@ -20,6 +20,7 @@ public class Player {
     private Deck deck;
     private Discard discard;
     private Hand hand;
+    private Image playerSprite;
     private Boolean isDead;
 
     public Player() {
@@ -32,6 +33,8 @@ public class Player {
         this.deck = generateStarterDeck();
         this.discard = new Discard();
         this.hand = new Hand();
+        this.playerSprite = new Image(getClass().getResource("/IdleFrame1.png").toExternalForm());
+        this.isDead = false;
         this.isDead = false;
     }
 
@@ -59,6 +62,9 @@ public class Player {
     public int getTreasure() {
         return treasure;
     }
+    public void addTreasure(int amount){
+        this.treasure += amount;
+    }
 
     public int getBlock() {
         return block;
@@ -80,6 +86,22 @@ public class Player {
         return hand;
     }
 
+    public Image getPlayerSprite() {
+        return playerSprite;
+    }
+
+    public void setPlayerSprite(Image playerSprite) {
+        this.playerSprite = playerSprite;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
     public void takeDamage(int dmg) {
         if (this.block >= dmg) {
             this.block -= dmg;
@@ -96,9 +118,9 @@ public class Player {
     private Deck generateStarterDeck(){
         Random rand = new Random();
         ArrayList<ICard> result = new ArrayList<>();
-        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE/*, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm())*/);
-        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR/*, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm())*/);
-        ICard healCard = new CardBuilt(3, 7, 1, EffectType.HEAL/*, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm())*/);
+        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm()));
+        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm()));
+        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm()));
         result.add(dmgCard);
         result.add(dmgCard);
         result.add(dmgCard);
@@ -113,15 +135,15 @@ public class Player {
         return new Deck(result);
     }
 
-    public void useCard(ICard card, Enemy enemy) {
-        if (this.hand.getHand().contains(card)) {
+    public void useCard(int index, Enemy enemy) {
+        ICard card = this.hand.getHand().get(index);
             if (this.energy >= card.getCost()) {
                card.useEffect(this, enemy);
-            this.hand.removeCard(card);
             this.addToDiscard(card);
+            this.hand.removeCard(index);
             this.energy -= card.getCost();
             }
-        }
+
     }
 
     public void drawCards() {
@@ -136,7 +158,6 @@ public class Player {
 
     public void addToDiscard(ICard card) {
         this.discard.addCard(card);
-        this.hand.removeCard(card);
     }
 
     public void handleDeath() {
@@ -166,15 +187,18 @@ public class Player {
     public void emptyHand() {
         int size = this.hand.getHand().size();
         for (int i = 0; i < size; i++) {
-            {
-                this.addToDiscard(this.hand.getHand().get(0));
-            }
+                this.addToDiscard(this.hand.getHand().get(i));
         }
         this.hand.clearHand();
+    }
+    public void reset(){
+        emptyHand();
+        resetDeckAndDiscard();
+        resetBlockAndEnergy();
     }
 
     public void resetBlockAndEnergy() {
         this.block = 0;
-        this.energy = 100;
+        this.energy = 3;
     }
 }

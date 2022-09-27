@@ -1,6 +1,8 @@
 package com.capstone.caledonia;
 
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,8 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.util.converter.NumberStringConverter;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+
+import static javafx.beans.binding.Bindings.bindBidirectional;
 
 public class BattleScreen extends AnchorPane{
     @FXML
@@ -42,6 +48,8 @@ public class BattleScreen extends AnchorPane{
     private Text discardCount;
     @FXML
     private Text handCount;
+    @FXML
+    private Text energy;
 
     private final BattleScreenViewModel viewModel = new BattleScreenViewModel();
     BattleScreen()throws Exception{
@@ -61,6 +69,10 @@ public class BattleScreen extends AnchorPane{
         deckCount.textProperty().bindBidirectional(viewModel.deckCountProperty());
         discardCount.textProperty().bindBidirectional(viewModel.discardCountProperty());
         handCount.textProperty().bindBidirectional(viewModel.handCountProperty());
+        Bindings.bindBidirectional(
+                energy.textProperty(),
+                viewModel.energyProperty(),
+                new NumberStringConverter());
     }
 
     @FXML
@@ -69,10 +81,30 @@ public class BattleScreen extends AnchorPane{
     }
     private ArrayList<ImageView> generateHandImageViews(){
         ArrayList<ImageView> result = new ArrayList<>();
+        int i = 0;
         for (Image cardImage: viewModel.generateHandImages()){
-            result.add(new ImageView(cardImage));
+            ImageView cardDisplay = new ImageView(cardImage);
+            cardDisplay.setId(String.valueOf(i));
+            cardDisplay.setOnMouseClicked(this::handleCardClick);
+            i++;
+            result.add(cardDisplay);
         }
         return result;
+    }
+
+    private void handleCardClick(Event event){
+        String imageID = ((ImageView)event.getSource()).getId();
+        viewModel.useCard(Integer.parseInt(imageID));
+        rebuildHand();
+    }
+    @FXML
+    private void handleConfirmClick(){
+        viewModel.handleNodeChange();
+        rebuildHand();
+    }
+    public void rebuildHand(){
+        cardBox.getChildren().clear();
+        cardBox.getChildren().addAll(generateHandImageViews());
     }
 
 
