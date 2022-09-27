@@ -38,7 +38,6 @@ public class CardBuilt implements ICard{
     }
 
     public void useEffect(Player player, Enemy enemy) {
-
         if (this.type == EffectType.ARMOUR) {
             player.addArmour(this.effect);
         } else if (this.type == EffectType.DAMAGE) {
