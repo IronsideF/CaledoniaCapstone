@@ -33,6 +33,18 @@ public class Player {
         this.hand = new Hand();
     }
 
+    public Player(int health, int energy, Deck deck) {
+        this.health = health;
+        this.maxHealth = health;
+        this.energy = energy;
+        this.maxEnergy = energy;
+        this.deck = deck;
+        this.treasure = 0;
+        this.block = 0;
+        this.discard = new Discard();
+        this.hand = new Hand();
+    }
+
     public int getHealth() {
         return health;
     }
@@ -65,9 +77,9 @@ public class Player {
         if (this.block >= dmg) {
             this.block -= dmg;
         } else {
-            dmg -= this.block;
+            int damage = (dmg - this.block);
             this.block = 0;
-            this.health -= dmg;
+            this.health -= damage;
             if (this.health <= 0 ) {
                 this.handleDeath();
             }
@@ -79,7 +91,7 @@ public class Player {
         ArrayList<ICard> result = new ArrayList<>();
         ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE/*, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm())*/);
         ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR/*, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm())*/);
-        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL/*, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm())*/);
+        ICard healCard = new CardBuilt(3, 7, 1, EffectType.HEAL/*, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm())*/);
         result.add(dmgCard);
         result.add(dmgCard);
         result.add(dmgCard);
@@ -96,7 +108,7 @@ public class Player {
 
     public void useCard(ICard card, Enemy enemy) {
         if (this.hand.getHand().contains(card)) {
-            if (this.energy > card.getCost()) {
+            if (this.energy >= card.getCost()) {
                card.useEffect(this, enemy);
             this.hand.removeCard(card);
             this.addToDiscard(card);

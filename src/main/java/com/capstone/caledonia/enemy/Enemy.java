@@ -23,9 +23,22 @@ public class Enemy {
         this.attacks = new ArrayList<>((Arrays.asList(10, 20, 50)));
     }
 
+    public int getHealth() {
+        return health;
+    }
+
+    public int getBlock() {
+        return block;
+    }
+
+    public ArrayList<Integer> getAttacks() {
+        return attacks;
+    }
+
     public void attackPlayer(Player player) {
         int i = (int)(Math.random() * this.attacks.size());
         int attack = this.attacks.get(i);
+        System.out.println(attack);
         player.takeDamage(attack);
     }
 
@@ -33,9 +46,9 @@ public class Enemy {
         if (this.block >= dmg) {
             this.block -= dmg;
         } else {
-            dmg -= this.block;
+            int damage = (dmg - this.block);
             this.block = 0;
-            this.health -= dmg;
+            this.health -= damage;
             if (this.health <= 0 ) {
                 this.handleDeath();
             }
