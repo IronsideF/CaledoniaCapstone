@@ -24,7 +24,7 @@ public class Game {
     public boolean useCard(int index){
         EnemyNode node = (EnemyNode) gameMap.getCurrentNode();
         player.useCard(index, node.getEnemy());
-        if (node.getEnemy().checkIfDead()){
+        if (node.getEnemy().getIsDead()){
             player.addTreasure(node.getTreasure());
             return true;
         }

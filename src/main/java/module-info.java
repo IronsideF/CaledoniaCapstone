@@ -11,7 +11,7 @@ module com.capstone.caledonia {
     opens com.capstone.caledonia to javafx.fxml;
     exports com.capstone.caledonia;
     exports com.capstone.caledonia.player;
-    exports com.capstone.caledonia.testing;
+//    exports com.capstone.caledonia.testing;
     exports com.capstone.caledonia.map;
     exports com.capstone.caledonia.node;
 }
