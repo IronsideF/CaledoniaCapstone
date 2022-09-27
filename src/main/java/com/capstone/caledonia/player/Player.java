@@ -1,6 +1,13 @@
 package com.capstone.caledonia.player;
 
+import com.capstone.caledonia.card.CardBuilt;
+import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
+import javafx.scene.image.Image;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Player {
     private int health;
@@ -13,14 +20,14 @@ public class Player {
     private Discard discard;
     private Hand hand;
 
-    public Player(int health, int energy, int treasure, int block, Deck deck) {
-        this.health = health;
+    public Player() {
+        this.health = 100;
         this.maxHealth = health;
-        this.energy = energy;
+        this.energy = 3;
         this.maxEnergy = energy;
-        this.treasure = treasure;
-        this.block = block;
-        this.deck = deck;
+        this.treasure = 0;
+        this.block = 0;
+        this.deck = generateStarterDeck();
         this.discard = new Discard();
         this.hand = new Hand();
     }
@@ -64,6 +71,26 @@ public class Player {
                 this.handleDeath();
             }
         }
+    }
+
+    private Deck generateStarterDeck(){
+        Random rand = new Random();
+        ArrayList<ICard> result = new ArrayList<>();
+        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm()));
+        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm()));
+        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm()));
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(dmgCard);
+        result.add(blockCard);
+        result.add(blockCard);
+        result.add(blockCard);
+        result.add(blockCard);
+        result.add(healCard);
+        Collections.shuffle(result);
+        return new Deck(result);
     }
 
     public void useCard(ICard card/*, Enemy enemy*/) {
