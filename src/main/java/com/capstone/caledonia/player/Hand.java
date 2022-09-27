@@ -22,10 +22,8 @@ public class Hand {
         }
     }
 
-    public void removeCard(ICard card) {
-        if (this.hand.contains(card)) {
-            this.hand.remove(card);
-        }
+    public void removeCard(int index) {
+            this.hand.remove(index);
     }
 
     public void clearHand() {
