@@ -24,7 +24,7 @@ public class Enemy {
         this.isDead = isDead;
     }
 
-    private ArrayList<Attack> generateAttacks() {
+    public ArrayList<Attack> generateAttacks() {
         Attack attack1 = new Attack(9, EffectType.ARMOUR, 6);
         Attack attack2 = new Attack(13, EffectType.DAMAGE, 0);
         Attack attack3 = new Attack(6, EffectType.HEAL, 7);
