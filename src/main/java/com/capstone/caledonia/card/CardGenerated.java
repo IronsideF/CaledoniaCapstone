@@ -60,6 +60,10 @@ public class CardGenerated implements ICard{
         return this.totalCost;
     }
 
+    public EffectType getEffectType() {
+        return this.cardEff.getType();
+    }
+
     public Image getCardImage() {
         return null;
     }
