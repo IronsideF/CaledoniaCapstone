@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+<?import javafx.scene.control.Button?>
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="background" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
@@ -19,5 +20,6 @@
       </ImageView>
       <ImageView fx:id="playerSprite" fitHeight="94.0" fitWidth="101.0" layoutX="117.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
       </ImageView>
+      <Button fx:id="quit" layoutX="657.0" layoutY="25.0" mnemonicParsing="false" onAction="#onQuitButtonClick" text="Quit" />
    </children>
 </fx:root>

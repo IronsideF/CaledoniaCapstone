@@ -1,6 +1,7 @@
 package com.capstone.caledonia;
 
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
@@ -30,5 +31,8 @@ public class TreasureScreen extends AnchorPane {
 
     @FXML private void handleTreasureChestClick()throws Exception{
         getScene().setRoot(viewModel.collectTreasure());
+    }
+    @FXML private void onQuitButtonClick(){
+        Platform.exit();
     }
 }

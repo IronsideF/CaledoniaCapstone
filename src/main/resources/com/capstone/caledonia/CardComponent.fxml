@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="78.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="cardBackground" fitHeight="100.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/CardBackgroundRed.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardBorder" fitHeight="100.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/CardBorderWood.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardArtBorder" fitHeight="50.0" fitWidth="60.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/CardArtBorder.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardTextBackground" fitHeight="20.0" fitWidth="65.0" layoutX="7.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/CardTextHolder.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cardIcon" fitHeight="26.0" fitWidth="26.0" layoutX="26.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox fx:id="cardTextBox" alignment="CENTER" layoutX="7.0" layoutY="62.0" prefHeight="20.0" prefWidth="65.0" />
+      <ImageView fx:id="cardCostHolder" fitHeight="17.0" fitWidth="17.0" layoutX="5.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/CardCostHolder.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="cardCost" fill="WHITE" layoutX="10.0" layoutY="16.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font>
+      </Text>
+   </children>
+</fx:root>

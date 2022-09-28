@@ -1,5 +1,6 @@
 package com.capstone.caledonia;
 
+import com.capstone.caledonia.node.TreasureNode;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
@@ -10,6 +11,7 @@ public class TreasureScreenViewModel {
 
     private Game game = Game.getInstance();
     private ObjectProperty<Image> playerSprite = new SimpleObjectProperty<>();
+    private TreasureNode node = (TreasureNode) game.gameMap.getCurrentNode();
 
     TreasureScreenViewModel(){
         setPlayerSprite(game.player.getPlayerSprite());
@@ -27,8 +29,8 @@ public class TreasureScreenViewModel {
         this.playerSprite.set(playerSprite);
     }
     public AnchorPane collectTreasure()throws Exception{
-        game.player.addTreasure(game.gameMap.getCurrentNode().getTreasure());
-        game.player.getDeck().addCard(game.gameMap.getCurrentNode().getRewardCard());
+        game.player.addTreasure(node.getTreasure());
+        game.player.getDeck().addCard(node.getRewardCard());
         return game.advanceToNextNode();
     }
 }

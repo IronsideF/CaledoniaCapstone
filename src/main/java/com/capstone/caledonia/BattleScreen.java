@@ -62,7 +62,7 @@ public class BattleScreen extends AnchorPane{
         loader.setRoot(this);
         loader.load();
         bindViewModel();
-        cardBox.getChildren().addAll(generateHandImageViews());
+        rebuildHand();
     }
 
     private void bindViewModel(){
@@ -90,28 +90,24 @@ public class BattleScreen extends AnchorPane{
     protected void onQuitButtonClick(){
         Platform.exit();
     }
-    private ArrayList<ImageView> generateHandImageViews(){
-        ArrayList<ImageView> result = new ArrayList<>();
-        int i = 0;
-        for (Image cardImage: viewModel.generateHandImages()){
-            ImageView cardDisplay = new ImageView(cardImage);
-            cardDisplay.setId(String.valueOf(i));
-            cardDisplay.setOnMouseClicked(event -> {
-                try {
-                    handleCardClick(event);
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            });
-            i++;
-            result.add(cardDisplay);
-        }
-        return result;
-    }
+//    private ArrayList<ImageView> generateHandImageViews(){
+//        ArrayList<ImageView> result = new ArrayList<>();
+//        int i = 0;
+//        for (Image cardImage: viewModel.getPlayerHand()){
+//            ImageView cardDisplay = new ImageView(cardImage);
+//            cardDisplay.setId(String.valueOf(i));
+
+//            });
+//            i++;
+//            result.add(cardDisplay);
+//        }
+//        return result;
+//    }
 
     private void handleCardClick(Event event) throws Exception{
-        String imageID = ((ImageView)event.getSource()).getId();
-        AnchorPane newScreen = viewModel.useCard(Integer.parseInt(imageID));
+        String cardID = ((CardComponent)event.getSource()).getId();
+        System.out.println(((CardComponent)event.getSource()).getId());
+        AnchorPane newScreen = viewModel.useCard(Integer.parseInt(cardID));
         rebuildHand();
         if (newScreen!=null){
         getScene().setRoot(newScreen);
@@ -128,8 +124,22 @@ public class BattleScreen extends AnchorPane{
         }
 
     }
-    public void rebuildHand(){
+    public void rebuildHand()throws Exception{
         cardBox.getChildren().clear();
-        cardBox.getChildren().addAll(generateHandImageViews());
+        ArrayList<CardComponent> playerHand = viewModel.getPlayerHand();
+        int i = 0;
+        for (CardComponent card: playerHand) {
+            card.setId(String.valueOf(i));
+            card.setOnMouseClicked(event -> {
+                        try {
+                            handleCardClick(event);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                    );
+            cardBox.getChildren().add(card);
+            i++;
+        }
     }
 }

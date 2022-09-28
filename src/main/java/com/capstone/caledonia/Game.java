@@ -62,8 +62,9 @@ public class Game {
     }
 
     public boolean endTurn(){
-        gameMap.getCurrentNode().getContents().resetBlock();
-        gameMap.getCurrentNode().getContents().attackPlayer(player);
+        EnemyNode node = (EnemyNode) gameMap.getCurrentNode();
+        node.getEnemy().resetBlock();
+        node.getEnemy().attackPlayer(player);
         player.endTurn();
         return player.getDead();
     }

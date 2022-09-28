@@ -10,5 +10,9 @@ public interface ICard {
     public int getCost();
 
     public int getDamage();
-    public Image getCardImage();
+    public Image getBackground();
+    public Image getTextIcon1();
+    public Image getTextIcon2();
+    public Image getIcon();
+    public Integer getEffect();
 }
