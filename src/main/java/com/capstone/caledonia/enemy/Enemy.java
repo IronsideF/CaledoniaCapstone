@@ -115,6 +115,9 @@ public class Enemy {
     public void addArmour(int val) {
         this.block += val;
     }
+    public void resetBlock(){
+        this.block=0;
+    }
 }
 
 

@@ -101,6 +101,9 @@ public class Player {
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
     }
+    public int getMaxEnergy(){
+        return maxEnergy;
+    }
 
     public void takeDamage(int dmg) {
         if (this.block >= dmg) {
@@ -146,13 +149,14 @@ public class Player {
 
     }
 
-    public void drawCards() {
-        int deckSize = this.deck.getCards().size();
-        if (deckSize > 7) {
-            this.hand.drawHand(this.deck);
-        } else {
-            this.resetDeckAndDiscard();
-            this.hand.drawHand(this.deck);
+    public void drawCards(int amount) {
+        while (amount > 0) {
+            int deckSize = this.deck.getCards().size();
+            if (deckSize <= 0) {
+                this.resetDeckAndDiscard();
+            }
+            this.hand.drawToHand(this.deck);
+            amount--;
         }
     }
 
@@ -199,7 +203,7 @@ public class Player {
     public void endTurn(){
         emptyHand();
         resetBlockAndEnergy();
-        drawCards();
+        drawCards(4);
     }
 
     public void resetBlockAndEnergy() {

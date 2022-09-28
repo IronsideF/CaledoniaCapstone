@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="background" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/BattleBackground800x600.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="treasureChest" onMouseClicked="#handleTreasureChestClick" fitHeight="150.0" fitWidth="171.0" layoutX="426.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/TreasureChest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playerSprite" fitHeight="94.0" fitWidth="101.0" layoutX="117.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+      </ImageView>
+   </children>
+</fx:root>

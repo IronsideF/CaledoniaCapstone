@@ -1,7 +1,9 @@
 package com.capstone.caledonia.node;
 
 
+import com.capstone.caledonia.BattleScreen;
 import com.capstone.caledonia.enemy.Enemy;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.Random;
 
@@ -32,6 +34,9 @@ public class EnemyNode implements INode {
     }
     public Enemy getContents(){
         return getEnemy();
+    }
+    public AnchorPane buildView() throws Exception{
+        return new BattleScreen();
     }
 
 }

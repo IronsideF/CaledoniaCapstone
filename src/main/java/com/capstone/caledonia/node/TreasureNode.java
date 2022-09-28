@@ -1,6 +1,8 @@
 package com.capstone.caledonia.node;
 
+import com.capstone.caledonia.TreasureScreen;
 import com.capstone.caledonia.enemy.Enemy;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.Random;
 
@@ -17,5 +19,8 @@ public class TreasureNode implements INode{
 
     public int getTreasure() {
         return treasure;
+    }
+    public AnchorPane buildView() throws Exception{
+        return new TreasureScreen();
     }
 }
