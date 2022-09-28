@@ -3,6 +3,7 @@ package com.capstone.caledonia.node;
 import com.capstone.caledonia.TreasureScreen;
 import com.capstone.caledonia.card.CardBuilder;
 import com.capstone.caledonia.card.CardGenerated;
+import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Enemy;
 import javafx.scene.layout.AnchorPane;
 
@@ -27,6 +28,10 @@ public class TreasureNode implements INode{
         this.cardGenerateds = (ArrayList<CardGenerated>) Arrays.asList(cardGenerated1, cardGenerated2, cardGenerated3);
     }
 
+    public ICard getRewardCard() {
+        int i = (int)(Math.random() * this.cardGenerateds.size());
+        return this.cardGenerateds.get(i);
+    }
     public Enemy getContents(){
         return null;
     }

@@ -4,6 +4,7 @@ package com.capstone.caledonia.node;
 import com.capstone.caledonia.BattleScreen;
 import com.capstone.caledonia.card.CardBuilder;
 import com.capstone.caledonia.card.CardGenerated;
+import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Enemy;
 import javafx.scene.layout.AnchorPane;
 
@@ -35,7 +36,7 @@ public class EnemyNode implements INode {
         return treasure;
     }
 
-    public CardGenerated getRewardCard() {
+    public ICard getRewardCard() {
         return this.cardGenerated;
     }
 

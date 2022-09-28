@@ -28,6 +28,7 @@ public class TreasureScreenViewModel {
     }
     public AnchorPane collectTreasure()throws Exception{
         game.player.addTreasure(game.gameMap.getCurrentNode().getTreasure());
+        game.player.getDeck().addCard(game.gameMap.getCurrentNode().getRewardCard());
         return game.advanceToNextNode();
     }
 }
