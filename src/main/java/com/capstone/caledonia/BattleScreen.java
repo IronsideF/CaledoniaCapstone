@@ -54,6 +54,7 @@ public class BattleScreen extends AnchorPane{
     @FXML private Text enemyMaxHealthInt;
     @FXML private Text playerBlock;
     @FXML private Text enemyBlock;
+    @FXML private Button nextScreen;
 
     private final BattleScreenViewModel viewModel = new BattleScreenViewModel();
     public BattleScreen()throws Exception{
@@ -141,5 +142,9 @@ public class BattleScreen extends AnchorPane{
             cardBox.getChildren().add(card);
             i++;
         }
+    }
+    public void onNextScreenClick()throws Exception{
+            getScene().setRoot(viewModel.handleNodeChange());
+
     }
 }

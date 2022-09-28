@@ -51,6 +51,9 @@ public class Game {
     public AnchorPane advanceToNextNode()throws Exception{
         if (gameMap.getPlayerPosition()+1< gameMap.getNodes().size()){
             gameMap.advance();
+            if (gameMap.getPlayerPosition()%3==0){
+                player.setMaxEnergy(player.getEnergy()+1);
+            }
             return gameMap.getCurrentNode().buildView();
         }
         return new VictoryScreen("Congratulations!");

@@ -126,5 +126,6 @@
             </Text>
          </children>
       </HBox>
+      <Button fx:id="nextScreen" layoutX="538.0" layoutY="126.0" mnemonicParsing="false" onAction="#onNextScreenClick" text="Next Screen" />
    </children>
 </fx:root>

@@ -9,27 +9,25 @@ import java.util.Arrays;
 
 public class Enemy {
 
-    private int health;
-    private int maxHealth;
-    private int block;
-    private Image enemySprite;
-    private ArrayList<Attack> attacks;
-    private Boolean isDead;
+    protected int health;
+    protected int maxHealth;
+    protected int block;
+    protected Image enemySprite;
+    protected ArrayList<Attack> attacks;
+    protected Boolean isDead;
 
-    public Enemy(int health, int block, ArrayList<Attack> attacks, Boolean isDead) {
+    public Enemy(int health) {
         this.health = health;
         this.maxHealth = health;
-        this.block = block;
-        this.attacks = attacks;
-        this.isDead = isDead;
+        this.block = 0;
+        this.isDead = false;
     }
 
     public ArrayList<Attack> generateAttacks() {
         Attack attack1 = new Attack(9, EffectType.ARMOUR, 6);
         Attack attack2 = new Attack(13, EffectType.DAMAGE, 0);
         Attack attack3 = new Attack(6, EffectType.HEAL, 7);
-        ArrayList<Attack> attacks = new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
-        return attacks;
+        return new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
     }
 
     public Enemy() {

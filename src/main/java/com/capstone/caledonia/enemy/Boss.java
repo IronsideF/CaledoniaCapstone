@@ -8,27 +8,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Boss extends Enemy{
-    private int health;
-    private int maxHealth;
-    private int block;
-//    private Image enemySprite;
-    private ArrayList<Attack> attacks;
-    private Boolean isDead;
 
     public Boss() {
-        this.health = 70;
-        this.maxHealth = this.health;
-        this.block = 0;
+        super(70);
         this.attacks = generateAttacks();
-        this.isDead = false;
     }
 
     public ArrayList<Attack> generateAttacks() {
         Attack attack1 = new Attack(15, EffectType.DAMAGE, 0);
         Attack attack2 = new Attack(7, EffectType.HEAL, 10);
         Attack attack3 = new Attack(10, EffectType.ARMOUR, 7);
-        ArrayList result = new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
-        return result;
+        return new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
     }
     public void attackPlayer(Player  player) {
         int i = (int)(Math.random() * this.attacks.size());
