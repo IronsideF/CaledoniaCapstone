@@ -29,5 +29,9 @@ public class Deck {
         this.deck.add(card);
     }
 
+    public void removeCard(ICard card) {
+        this.getCards().remove(card);
+    }
+
 
 }

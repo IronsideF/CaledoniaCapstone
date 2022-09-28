@@ -1,5 +1,6 @@
 package com.capstone.caledonia.map;
 
+import com.capstone.caledonia.node.BossNode;
 import com.capstone.caledonia.node.EnemyNode;
 import com.capstone.caledonia.node.INode;
 import com.capstone.caledonia.node.TreasureNode;
@@ -43,7 +44,7 @@ public class GameMap {
             } else {
                 nodes.add(new TreasureNode());
             }
-            System.out.println(nodes.get(i));
+            nodes.add(new BossNode());
         }
     }
     public INode getCurrentNode(){

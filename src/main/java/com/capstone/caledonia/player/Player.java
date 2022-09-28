@@ -23,6 +23,7 @@ public class Player {
     private Hand hand;
     private Image playerSprite;
     private Boolean isDead;
+    private Bag bag;
 
     public Player() {
         this.health = 100;
@@ -36,6 +37,7 @@ public class Player {
         this.hand = new Hand();
         this.playerSprite = new Image(getClass().getResource("/IdleFrame1.png").toExternalForm());
         this.isDead = false;
+        this.bag = new Bag();
     }
 
     public Player(int health, int energy, Deck deck) {
@@ -49,6 +51,7 @@ public class Player {
         this.discard = new Discard();
         this.hand = new Hand();
         this.isDead = false;
+        this.bag = new Bag();
     }
 
     public int getHealth() {
@@ -96,6 +99,10 @@ public class Player {
 
     public int getMaxHealth() {
         return maxHealth;
+    }
+
+    public Bag getBag() {
+        return this.bag;
     }
 
     public void setMaxHealth(int maxHealth) {
