@@ -8,6 +8,12 @@ public class CardGenerated implements ICard{
 
     private CardDmg cardDmg;
     private CardEff cardEff;
+    private Image background;
+    private Image icon;
+    private Image textIcon1;
+    private Image textIcon2;
+    private boolean doubleText;
+
 
     private int totalCost;
 
@@ -15,6 +21,7 @@ public class CardGenerated implements ICard{
         this.cardDmg = cardDmg;
         this.cardEff = cardEff;
         this.totalCost = this.findTotalCost();
+        findImages();
     }
 
     public CardDmg getCardDmg() {
@@ -31,6 +38,13 @@ public class CardGenerated implements ICard{
 
     public int findTotalCost() {
         return this.cardDmg.getCost() + this.cardEff.getCost();
+    }
+    private void findImages(){
+        this.background = cardEff.getType().getBackground();
+        this.icon = cardEff.getType().getIcon();
+        this.textIcon1 = cardDmg.getIcon();
+        this.textIcon2 = cardEff.getType().getTextIcon();
+        this.doubleText = cardEff.getType()!=EffectType.DAMAGE;
     }
 
     public void useEffect(Player player, Enemy enemy) {
@@ -64,32 +78,31 @@ public class CardGenerated implements ICard{
         return this.cardEff.getType();
     }
 
-    public Image getCardImage() {
-        return null;
-    }
 
     @Override
     public Image getBackground() {
-        return null;
+        return background;
     }
 
     @Override
     public Image getTextIcon1() {
-        return null;
+        return textIcon1;
     }
 
     @Override
     public Image getTextIcon2() {
-        return null;
+        return textIcon2;
     }
 
     @Override
     public Image getIcon() {
-        return null;
+        return icon;
     }
 
     @Override
-    public int getEffect() {
-        return 0;
+    public Integer getEffect() {
+        if(doubleText){
+        return cardEff.getEffect();}
+        return null;
     }
 }

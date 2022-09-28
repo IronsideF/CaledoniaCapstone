@@ -213,10 +213,11 @@ public class BattleScreenViewModel {
         this.maxEnergy.set(maxEnergy);
     }
 
-    public ArrayList<Image> generateHandImages(){
-        ArrayList<Image> result = new ArrayList<>();
+    public ArrayList<CardComponent> getPlayerHand()throws Exception{
+        ArrayList<CardComponent> result = new ArrayList<>();
         for (ICard card : game.player.getHand().getHand()){
-            result.add(card.getCardImage());
+            CardComponent cardComp = new CardComponent(card);
+            result.add(new CardComponent(card));
         }
         return result;
     }

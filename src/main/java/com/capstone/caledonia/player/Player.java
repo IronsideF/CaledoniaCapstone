@@ -1,5 +1,6 @@
 package com.capstone.caledonia.player;
 
+import com.capstone.caledonia.card.CardBuilder;
 import com.capstone.caledonia.card.CardBuilt;
 import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
@@ -34,7 +35,6 @@ public class Player {
         this.discard = new Discard();
         this.hand = new Hand();
         this.playerSprite = new Image(getClass().getResource("/IdleFrame1.png").toExternalForm());
-        this.isDead = false;
         this.isDead = false;
     }
 
@@ -119,21 +119,11 @@ public class Player {
     }
 
     private Deck generateStarterDeck(){
-        Random rand = new Random();
+        CardBuilder builder = new CardBuilder();
         ArrayList<ICard> result = new ArrayList<>();
-        ICard dmgCard = new CardBuilt(5, 0, 1, EffectType.DAMAGE, new Image(getClass().getResource("/BasicDamageCard.png").toExternalForm()));
-        ICard blockCard = new CardBuilt(0, 4, 1, EffectType.ARMOUR, new Image(getClass().getResource("/BasicBlockCard.png").toExternalForm()));
-        ICard healCard = new CardBuilt(3, 7, 2, EffectType.HEAL, new Image(getClass().getResource("/BasicHealCard.png").toExternalForm()));
-        result.add(dmgCard);
-        result.add(dmgCard);
-        result.add(dmgCard);
-        result.add(dmgCard);
-        result.add(dmgCard);
-        result.add(blockCard);
-        result.add(blockCard);
-        result.add(blockCard);
-        result.add(blockCard);
-        result.add(healCard);
+        for (int i = 0; i<10; i++) {
+            result.add(builder.buildCard());
+        }
         Collections.shuffle(result);
         return new Deck(result);
     }

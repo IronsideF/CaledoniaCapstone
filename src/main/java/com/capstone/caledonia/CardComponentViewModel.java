@@ -1,10 +1,7 @@
 package com.capstone.caledonia;
 
 import com.capstone.caledonia.card.ICard;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 import javafx.scene.image.Image;
 
 public class CardComponentViewModel {
@@ -14,17 +11,19 @@ public class CardComponentViewModel {
     private ObjectProperty<Image> cardBackground = new SimpleObjectProperty<>();
     private ObjectProperty<Image> cardTextIcon1 = new SimpleObjectProperty<>();
     private ObjectProperty<Image> cardTextIcon2 = new SimpleObjectProperty<>();
-    private IntegerProperty cardEffect = new SimpleIntegerProperty();
+    private StringProperty cardEffect = new SimpleStringProperty();
 
 
     CardComponentViewModel(ICard card){
         setCardCost(card.getCost());
         setCardBackground(card.getBackground());
         setCardDamage(card.getDamage());
-        setCardEffect(card.getEffect());
         setCardIcon(card.getIcon());
         setCardTextIcon1(card.getTextIcon1());
         setCardTextIcon2(card.getTextIcon2());
+        if (card.getEffect()!=null){
+            setCardEffect(String.valueOf(card.getEffect()));
+        } else {setCardEffect("");}
     }
 
     public int getCardCost() {
@@ -99,15 +98,15 @@ public class CardComponentViewModel {
         this.cardTextIcon2.set(cardTextIcon2);
     }
 
-    public int getCardEffect() {
+    public String getCardEffect() {
         return cardEffect.get();
     }
 
-    public IntegerProperty cardEffectProperty() {
+    public StringProperty cardEffectProperty() {
         return cardEffect;
     }
 
-    public void setCardEffect(int cardEffect) {
+    public void setCardEffect(String cardEffect) {
         this.cardEffect.set(cardEffect);
     }
 }

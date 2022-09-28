@@ -1,5 +1,6 @@
 package com.capstone.caledonia.node;
 
+import com.almasb.fxgl.core.collection.Array;
 import com.capstone.caledonia.TreasureScreen;
 import com.capstone.caledonia.card.CardBuilder;
 import com.capstone.caledonia.card.CardGenerated;
@@ -25,7 +26,10 @@ public class TreasureNode implements INode{
         this.cardGenerated1 = cardBuilder.buildCard();
         this.cardGenerated2 = cardBuilder.buildCard();
         this.cardGenerated3 = cardBuilder.buildCard();
-        this.cardGenerateds = (ArrayList<CardGenerated>) Arrays.asList(cardGenerated1, cardGenerated2, cardGenerated3);
+        this.cardGenerateds = new ArrayList<>();
+        cardGenerateds.add(cardGenerated1);
+        cardGenerateds.add(cardGenerated2);
+        cardGenerateds.add(cardGenerated3);
     }
 
     public ICard getRewardCard() {

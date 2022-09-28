@@ -25,7 +25,7 @@ public class CardBuilt implements ICard{
         return dmg;
     }
 
-    public int getEffect() {
+    public Integer getEffect() {
         return effect;
     }
 
