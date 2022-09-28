@@ -29,6 +29,7 @@ public class BattleScreenViewModel {
     private IntegerProperty energy = new SimpleIntegerProperty();
     private IntegerProperty maxEnergy = new SimpleIntegerProperty();
     private EnemyNode node = (EnemyNode)game.gameMap.getCurrentNode();
+    private IntegerProperty treasureCount = new SimpleIntegerProperty();
 
     public BattleScreenViewModel() {
         game.startBattle();
@@ -213,6 +214,18 @@ public class BattleScreenViewModel {
         this.maxEnergy.set(maxEnergy);
     }
 
+    public int getTreasureCount() {
+        return treasureCount.get();
+    }
+
+    public IntegerProperty treasureCountProperty() {
+        return treasureCount;
+    }
+
+    public void setTreasureCount(int treasureCount) {
+        this.treasureCount.set(treasureCount);
+    }
+
     public ArrayList<CardComponent> getPlayerHand()throws Exception{
         ArrayList<CardComponent> result = new ArrayList<>();
         for (ICard card : game.player.getHand().getHand()){
@@ -249,20 +262,22 @@ public class BattleScreenViewModel {
         setMaxEnergy(game.player.getMaxEnergy());
         setPlayerBlock(game.player.getBlock());
     }
+    public void updateTreasureCount(){
+        setTreasureCount(game.player.getTreasure());
+    }
     public void updateUI(){
         updateHP();
         updateEnergyAndBlock();
         updateCardInfo();
         updateSprites();
+        updateTreasureCount();
     }
-    public AnchorPane useCard(int index)throws Exception{
-        boolean enemyDead = game.useCard(index);
+    public boolean useCard(int index)throws Exception{
+        game.useCard(index);
         updateUI();
-        if (enemyDead){
-            return handleNodeChange();
-        }
-        return null;
+        return node.getEnemy().getIsDead();
     }
+
     public AnchorPane handleNodeChange()throws Exception{
         return game.advanceToNextNode();
     }

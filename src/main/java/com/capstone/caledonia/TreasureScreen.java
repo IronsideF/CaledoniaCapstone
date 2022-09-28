@@ -30,7 +30,7 @@ public class TreasureScreen extends AnchorPane {
     }
 
     @FXML private void handleTreasureChestClick()throws Exception{
-        getScene().setRoot(viewModel.collectTreasure());
+       getChildren().add(new RewardScreen());
     }
     @FXML private void onQuitButtonClick(){
         Platform.exit();

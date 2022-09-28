@@ -1,7 +1,6 @@
 package com.capstone.caledonia;
 
 import com.capstone.caledonia.card.ICard;
-import com.capstone.caledonia.enemy.Enemy;
 import com.capstone.caledonia.map.GameMap;
 import com.capstone.caledonia.node.EnemyNode;
 import com.capstone.caledonia.player.Player;
@@ -23,15 +22,9 @@ public class Game {
         return single_instance;
     }
 
-    public boolean useCard(int index){
+    public void useCard(int index){
         EnemyNode node = (EnemyNode) gameMap.getCurrentNode();
         player.useCard(index, node.getEnemy());
-        if (node.getEnemy().getIsDead()){
-            player.addTreasure(node.getTreasure());
-            player.getDeck().addCard(node.getRewardCard());
-            return true;
-        }
-        return false;
     }
     public void startBattle(){
         player.reset();
@@ -52,7 +45,7 @@ public class Game {
         if (gameMap.getPlayerPosition()+1< gameMap.getNodes().size()){
             gameMap.advance();
             if (gameMap.getPlayerPosition()%3==0){
-                player.setMaxEnergy(player.getEnergy()+1);
+                player.setMaxEnergy(player.getMaxEnergy()+1);
             }
             return gameMap.getCurrentNode().buildView();
         }

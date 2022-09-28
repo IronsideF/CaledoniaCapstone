@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -44,8 +43,6 @@ public class BattleScreen extends AnchorPane{
     @FXML
     private Text discardCount;
     @FXML
-    private Text handCount;
-    @FXML
     private Text energy;
     @FXML private Text maxEnergy;
     @FXML private Text playerHealthInt;
@@ -55,6 +52,7 @@ public class BattleScreen extends AnchorPane{
     @FXML private Text playerBlock;
     @FXML private Text enemyBlock;
     @FXML private Button nextScreen;
+    @FXML private Text treasureCount;
 
     private final BattleScreenViewModel viewModel = new BattleScreenViewModel();
     public BattleScreen()throws Exception{
@@ -78,13 +76,13 @@ public class BattleScreen extends AnchorPane{
         Bindings.bindBidirectional(enemyMaxHealthInt.textProperty(), viewModel.enemyMaxHealthIntProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(enemyHealthInt.textProperty(), viewModel.enemyHealthIntProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(maxEnergy.textProperty(), viewModel.maxEnergyProperty(), new NumberStringConverter());
-        Bindings.bindBidirectional(handCount.textProperty(), viewModel.handCountProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(deckCount.textProperty(), viewModel.deckCountProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(discardCount.textProperty(), viewModel.discardCountProperty(), new NumberStringConverter());
         Bindings.bindBidirectional(
                 energy.textProperty(),
                 viewModel.energyProperty(),
                 new NumberStringConverter());
+        Bindings.bindBidirectional(treasureCount.textProperty(), viewModel.treasureCountProperty(), new NumberStringConverter());
     }
 
     @FXML
@@ -108,12 +106,10 @@ public class BattleScreen extends AnchorPane{
     private void handleCardClick(Event event) throws Exception{
         String cardID = ((CardComponent)event.getSource()).getId();
         System.out.println(((CardComponent)event.getSource()).getId());
-        AnchorPane newScreen = viewModel.useCard(Integer.parseInt(cardID));
-        rebuildHand();
-        if (newScreen!=null){
-        getScene().setRoot(newScreen);
+        if(viewModel.useCard(Integer.parseInt(cardID))){
+            getChildren().add(new RewardScreen());
         }
-
+        rebuildHand();
     }
     @FXML
     private void handleConfirmClick()throws Exception{
