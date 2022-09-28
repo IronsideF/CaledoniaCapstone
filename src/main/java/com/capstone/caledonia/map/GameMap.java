@@ -44,8 +44,8 @@ public class GameMap {
             } else {
                 nodes.add(new TreasureNode());
             }
-            nodes.add(new BossNode());
         }
+        nodes.add(new BossNode());
     }
     public INode getCurrentNode(){
         return nodes.get(playerPosition);

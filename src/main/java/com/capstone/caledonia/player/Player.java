@@ -28,7 +28,7 @@ public class Player {
     public Player() {
         this.health = 100;
         this.maxHealth = health;
-        this.energy = 3;
+        this.energy = 5;
         this.maxEnergy = energy;
         this.treasure = 0;
         this.block = 0;
@@ -110,6 +110,9 @@ public class Player {
     }
     public int getMaxEnergy(){
         return maxEnergy;
+    }
+    public void setMaxEnergy(int amount){
+        this.maxEnergy = amount;
     }
 
     public void takeDamage(int dmg) {
@@ -205,6 +208,6 @@ public class Player {
 
     public void resetBlockAndEnergy() {
         this.block = 0;
-        this.energy = 3;
+        this.energy = maxEnergy;
     }
 }

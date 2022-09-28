@@ -11,10 +11,10 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Random;
 
 public class EnemyNode implements INode {
-    private Enemy enemy;
-    private int treasure;
-    private CardBuilder cardBuilder;
-    private CardGenerated cardGenerated;
+    protected Enemy enemy;
+    protected int treasure;
+    protected CardBuilder cardBuilder;
+    protected CardGenerated cardGenerated;
 
     public EnemyNode() {
         Random rand = new Random();
