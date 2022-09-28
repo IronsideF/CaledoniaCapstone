@@ -14,4 +14,5 @@ module com.capstone.caledonia {
 //    exports com.capstone.caledonia.testing;
     exports com.capstone.caledonia.map;
     exports com.capstone.caledonia.node;
+    exports com.capstone.caledonia.card;
 }

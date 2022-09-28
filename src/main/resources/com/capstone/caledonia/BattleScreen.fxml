@@ -30,36 +30,24 @@
       <Button fx:id="deckButton" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" text="Deck" />
       <Button fx:id="mapButton" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" text="Map" />
       <Button fx:id="quitButton" layoutX="737.0" layoutY="14.0" mnemonicParsing="false" onAction="#onQuitButtonClick" text="Quit" />
-      <Text fx:id="deckCount" fill="#f8f5f5" layoutX="33.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font name="Abaddon Bold Regular" size="13.0" />
-         </font>
-      </Text>
-      <Text fx:id="discardCount" fill="#fcfafa" layoutX="225.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0">
-         <font>
-            <Font name="Abaddon Bold Regular" size="13.0" />
-         </font>
-      </Text>
-      <Text fx:id="handCount" fill="#fcfcfc" layoutX="119.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="21.0">
-         <font>
-            <Font name="Abaddon Bold Regular" size="13.0" />
-         </font>
-      </Text>
-      <HBox alignment="CENTER" layoutX="250.0" layoutY="395.0" prefHeight="34.0" prefWidth="68.0">
+      <HBox alignment="CENTER" layoutX="254.0" layoutY="300.0" prefHeight="34.0" prefWidth="68.0">
          <children>
             <ImageView fitHeight="59.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/PlayerBlockIcon.png" />
                </image>
             </ImageView>
-            <Text fx:id="playerBlock" fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Text fx:id="playerBlock" fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="18.0" />
+               </font></Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="360.0" layoutY="399.0" prefHeight="34.0" prefWidth="55.0">
+      <HBox alignment="CENTER" layoutX="360.0" layoutY="300.0" prefHeight="34.0" prefWidth="55.0">
          <children>
             <Text fx:id="enemyBlock" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font name="Abaddon Bold Regular" size="13.0" />
+                  <Font name="Abaddon Bold Regular" size="18.0" />
                </font>
             </Text>
             <ImageView fitHeight="34.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
@@ -107,25 +95,56 @@
             </Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="104.0" layoutY="186.0" prefHeight="42.0" prefWidth="94.0">
-         <children>
-            <Text fx:id="energy" fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="cEnergy" wrappingWidth="34.0">
-               <font>
-                  <Font name="Abaddon Bold Regular" size="25.0" />
-               </font>
-            </Text>
-            <Text fill="#fffefe" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
-               <font>
-                  <Font name="Abaddon Bold Regular" size="25.0" />
-               </font>
-            </Text>
-            <Text fx:id="maxEnergy" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="mEnergy">
-               <font>
-                  <Font name="Abaddon Bold Regular" size="25.0" />
-               </font>
-            </Text>
-         </children>
-      </HBox>
       <Button fx:id="nextScreen" layoutX="538.0" layoutY="126.0" mnemonicParsing="false" onAction="#onNextScreenClick" text="Next Screen" />
+      <Text fx:id="treasureCount" fill="WHITE" layoutX="175.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
+         <font>
+            <Font name="Abaddon Bold Regular" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="42.0" fitWidth="42.0" layoutX="201.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/TreasureChest.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="38.0" fitWidth="103.0" layoutX="256.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/CardTextHolder.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="260.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deck:">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="deckCount" fill="#f8f5f5" layoutX="290.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" wrappingWidth="21.9375">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="303.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Discard:">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="discardCount" fill="#fcfafa" layoutX="347.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="energy" fill="#fffefe" layoutX="109.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" wrappingWidth="18.6875">
+         <font>
+            <Font name="Abaddon Bold Regular" size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="maxEnergy" fill="WHITE" layoutX="138.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+         <font>
+            <Font name="Abaddon Bold Regular" size="25.0" />
+         </font>
+      </Text>
+      <Text fill="#fffefe" layoutX="123.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+         <font>
+            <Font name="Abaddon Bold Regular" size="25.0" />
+         </font>
+      </Text>
    </children>
 </fx:root>
