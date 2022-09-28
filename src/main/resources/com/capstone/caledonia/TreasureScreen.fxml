@@ -12,7 +12,7 @@
             <Image url="@images/BattleBackground800x600.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="treasureChest" fitHeight="150.0" fitWidth="171.0" layoutX="426.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="treasureChest" onMouseClicked="#handleTreasureChestClick" fitHeight="150.0" fitWidth="171.0" layoutX="426.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/TreasureChest.png" />
          </image>

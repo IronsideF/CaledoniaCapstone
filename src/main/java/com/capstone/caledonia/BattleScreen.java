@@ -111,10 +111,10 @@ public class BattleScreen extends AnchorPane{
 
     private void handleCardClick(Event event) throws Exception{
         String imageID = ((ImageView)event.getSource()).getId();
-        if(!viewModel.useCard(Integer.parseInt(imageID))){
-        rebuildHand();} else {
-                VictoryScreen vicScreen = new VictoryScreen("Congratulations!");
-                getScene().setRoot(vicScreen);
+        AnchorPane newScreen = viewModel.useCard(Integer.parseInt(imageID));
+        rebuildHand();
+        if (newScreen!=null){
+        getScene().setRoot(newScreen);
         }
 
     }

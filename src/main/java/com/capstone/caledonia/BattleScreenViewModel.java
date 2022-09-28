@@ -5,6 +5,7 @@ import com.capstone.caledonia.enemy.Enemy;
 import converters.HPConverter;
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
 
@@ -251,20 +252,16 @@ public class BattleScreenViewModel {
         updateCardInfo();
         updateSprites();
     }
-    public boolean useCard(int index){
+    public AnchorPane useCard(int index)throws Exception{
         boolean enemyDead = game.useCard(index);
         updateUI();
         if (enemyDead){
             return handleNodeChange();
         }
-        else return false;
+        return null;
     }
-    public boolean handleNodeChange(){
-        if(!game.advanceToNextNode()){
-        updateUI();
-        return false;}
-        game.handleVictory();
-        return true;
+    public AnchorPane handleNodeChange()throws Exception{
+        return game.advanceToNextNode();
     }
     public boolean endTurn(){
         boolean gameOver = game.endTurn();

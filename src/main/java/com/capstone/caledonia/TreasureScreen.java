@@ -28,7 +28,7 @@ public class TreasureScreen extends AnchorPane {
         playerSprite.imageProperty().bindBidirectional(viewModel.playerSpriteProperty());
     }
 
-    @FXML private void handleTreasureChestClick(){
-        viewModel.collectTreasure();
+    @FXML private void handleTreasureChestClick()throws Exception{
+        getScene().setRoot(viewModel.collectTreasure());
     }
 }

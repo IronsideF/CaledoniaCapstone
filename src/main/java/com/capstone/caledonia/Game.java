@@ -4,6 +4,7 @@ import com.capstone.caledonia.enemy.Enemy;
 import com.capstone.caledonia.map.GameMap;
 import com.capstone.caledonia.node.EnemyNode;
 import com.capstone.caledonia.player.Player;
+import javafx.scene.layout.AnchorPane;
 
 public class Game {
     private static Game single_instance = null;
@@ -35,13 +36,12 @@ public class Game {
         player.drawCards(4);
     }
 
-    public boolean advanceToNextNode(){
+    public AnchorPane advanceToNextNode()throws Exception{
         if (gameMap.getPlayerPosition()+1< gameMap.getNodes().size()){
             gameMap.advance();
-            startBattle();
-            return false;
+            return gameMap.getCurrentNode().buildView();
         }
-        return true;
+        return new VictoryScreen("Congratulations!");
     }
 
     public void resetInstance(){
