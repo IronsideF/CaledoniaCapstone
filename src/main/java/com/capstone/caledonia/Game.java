@@ -1,5 +1,6 @@
 package com.capstone.caledonia;
 
+import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Enemy;
 import com.capstone.caledonia.map.GameMap;
 import com.capstone.caledonia.node.EnemyNode;
@@ -35,6 +36,16 @@ public class Game {
     public void startBattle(){
         player.reset();
         player.drawCards(4);
+    }
+
+    public void moveCardFromDeckToBag(ICard card) {
+        player.getDeck().removeCard(card);
+        player.getBag().addCard(card);
+    }
+
+    public void moveCardFromBagToDeck(ICard card) {
+        player.getBag().removeCard(card);
+        player.getDeck().addCard(card);
     }
 
     public AnchorPane advanceToNextNode()throws Exception{
