@@ -27,6 +27,7 @@ public class Game {
         player.useCard(index, node.getEnemy());
         if (node.getEnemy().getIsDead()){
             player.addTreasure(node.getTreasure());
+            player.getDeck().addCard(node.getRewardCard());
             return true;
         }
         return false;

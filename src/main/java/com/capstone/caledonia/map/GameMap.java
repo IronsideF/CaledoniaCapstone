@@ -45,16 +45,6 @@ public class GameMap {
             }
             System.out.println(nodes.get(i));
         }
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
-//        this.nodes.add(new EnemyNode());
     }
     public INode getCurrentNode(){
         return nodes.get(playerPosition);
