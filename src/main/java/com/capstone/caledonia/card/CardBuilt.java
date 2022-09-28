@@ -63,6 +63,26 @@ public class CardBuilt implements ICard{
         return cardImage;
     }
 
+    @Override
+    public Image getBackground() {
+        return null;
+    }
+
+    @Override
+    public Image getTextIcon1() {
+        return null;
+    }
+
+    @Override
+    public Image getTextIcon2() {
+        return null;
+    }
+
+    @Override
+    public Image getIcon() {
+        return null;
+    }
+
     public void setCardImage(Image cardImage) {
         this.cardImage = cardImage;
     }

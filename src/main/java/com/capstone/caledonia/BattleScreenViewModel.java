@@ -2,6 +2,7 @@ package com.capstone.caledonia;
 
 import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Enemy;
+import com.capstone.caledonia.node.EnemyNode;
 import converters.HPConverter;
 import javafx.beans.property.*;
 import javafx.scene.image.Image;
@@ -27,6 +28,7 @@ public class BattleScreenViewModel {
     private IntegerProperty handCount = new SimpleIntegerProperty();
     private IntegerProperty energy = new SimpleIntegerProperty();
     private IntegerProperty maxEnergy = new SimpleIntegerProperty();
+    private EnemyNode node = (EnemyNode)game.gameMap.getCurrentNode();
 
     public BattleScreenViewModel() {
         game.startBattle();
@@ -221,7 +223,7 @@ public class BattleScreenViewModel {
 
 
     public void updateHP(){
-        Enemy enemy = game.gameMap.getCurrentNode().getContents();
+        Enemy enemy = node.getEnemy();
         setPlayerHealthInt(game.player.getHealth());
         setPlayerMaxHealthInt(game.player.getMaxHealth());
         setEnemyHealthInt(enemy.getHealth());
@@ -239,7 +241,7 @@ public class BattleScreenViewModel {
     }
     public void updateSprites(){
         setPlayerSprite(game.player.getPlayerSprite());
-        setEnemySprite(game.gameMap.getCurrentNode().getContents().getEnemySprite());
+        setEnemySprite(node.getEnemy().getEnemySprite());
     }
     public void updateEnergyAndBlock(){
         setEnergy(game.player.getEnergy());

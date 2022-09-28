@@ -63,4 +63,29 @@ public class CardGenerated implements ICard{
     public Image getCardImage() {
         return null;
     }
+
+    @Override
+    public Image getBackground() {
+        return null;
+    }
+
+    @Override
+    public Image getTextIcon1() {
+        return null;
+    }
+
+    @Override
+    public Image getTextIcon2() {
+        return null;
+    }
+
+    @Override
+    public Image getIcon() {
+        return null;
+    }
+
+    @Override
+    public int getEffect() {
+        return 0;
+    }
 }

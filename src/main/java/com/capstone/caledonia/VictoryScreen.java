@@ -33,9 +33,7 @@ public class VictoryScreen extends AnchorPane {
     }
     @FXML
     protected void handlePlayAgainClick()throws Exception{
-        viewModel.restartGame();
-        BattleScreen initialBattle = new BattleScreen();
-        getScene().setRoot(initialBattle);
+        getScene().setRoot(viewModel.restartGame());
     }
 
 }
