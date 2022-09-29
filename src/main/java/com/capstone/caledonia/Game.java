@@ -3,6 +3,7 @@ package com.capstone.caledonia;
 import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.map.GameMap;
 import com.capstone.caledonia.node.EnemyNode;
+import com.capstone.caledonia.node.TreasureNode;
 import com.capstone.caledonia.player.Player;
 import javafx.scene.layout.AnchorPane;
 
@@ -28,7 +29,8 @@ public class Game {
     }
     public void startBattle(){
         player.reset();
-        player.drawCards(4);
+        player.drawCards(player.getCardsDrawnPerTurn());
+        ((EnemyNode)gameMap.getCurrentNode()).getEnemy().setIntent();
     }
 
     public void moveCardFromDeckToBag(ICard card) {
@@ -44,8 +46,9 @@ public class Game {
     public AnchorPane advanceToNextNode()throws Exception{
         if (gameMap.getPlayerPosition()+1< gameMap.getNodes().size()){
             gameMap.advance();
-            if (gameMap.getPlayerPosition()%3==0){
+            if (gameMap.getCurrentNode() instanceof TreasureNode){
                 player.setMaxEnergy(player.getMaxEnergy()+1);
+                player.incrementCardsDrawnPerTurn();
             }
             return gameMap.getCurrentNode().buildView();
         }
@@ -62,6 +65,8 @@ public class Game {
         node.getEnemy().resetBlock();
         node.getEnemy().attackPlayer(player);
         player.endTurn();
+        node.getEnemy().clearIntent();
+        node.getEnemy().setIntent();
         return player.getDead();
     }
 

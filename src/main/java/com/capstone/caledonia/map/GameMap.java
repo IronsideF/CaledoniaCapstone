@@ -5,7 +5,6 @@ import com.capstone.caledonia.node.EnemyNode;
 import com.capstone.caledonia.node.INode;
 import com.capstone.caledonia.node.TreasureNode;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -38,12 +37,8 @@ public class GameMap {
     }
     private void generateGameMap(){
         for (int i = 0; i < 10; i++) {
-            int index = (int)(Math.random() * 2);
-            if (index == 1) {
-                nodes.add(new EnemyNode());
-            } else {
-                nodes.add(new TreasureNode());
-            }
+            if (i>1&&i%3==0){nodes.add(new TreasureNode());}
+            else {nodes.add(new EnemyNode());}
         }
         nodes.add(new BossNode());
     }

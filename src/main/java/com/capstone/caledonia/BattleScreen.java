@@ -7,9 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.util.converter.NumberStringConverter;
 
@@ -28,8 +28,6 @@ public class BattleScreen extends AnchorPane{
     private ProgressBar playerHealth;
     @FXML
     private ProgressBar enemyHealth;
-    @FXML
-    private HBox enemyBox;
     @FXML
     private ImageView enemySprite;
     @FXML
@@ -53,6 +51,7 @@ public class BattleScreen extends AnchorPane{
     @FXML private Text enemyBlock;
     @FXML private Button nextScreen;
     @FXML private Text treasureCount;
+    @FXML private HBox enemyIntentBox;
 
     private final BattleScreenViewModel viewModel = new BattleScreenViewModel();
     public BattleScreen()throws Exception{
@@ -62,6 +61,9 @@ public class BattleScreen extends AnchorPane{
         loader.load();
         bindViewModel();
         rebuildHand();
+        buildEnemyIntent();
+        Background enemyIntentBackground = new Background(new BackgroundImage(new Image(getClass().getResource("/EnemyIntentBackground.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT));
+        enemyIntentBox.setBackground(enemyIntentBackground);
     }
 
     private void bindViewModel(){
@@ -89,19 +91,6 @@ public class BattleScreen extends AnchorPane{
     protected void onQuitButtonClick(){
         Platform.exit();
     }
-//    private ArrayList<ImageView> generateHandImageViews(){
-//        ArrayList<ImageView> result = new ArrayList<>();
-//        int i = 0;
-//        for (Image cardImage: viewModel.getPlayerHand()){
-//            ImageView cardDisplay = new ImageView(cardImage);
-//            cardDisplay.setId(String.valueOf(i));
-
-//            });
-//            i++;
-//            result.add(cardDisplay);
-//        }
-//        return result;
-//    }
 
     private void handleCardClick(Event event) throws Exception{
         String cardID = ((CardComponent)event.getSource()).getId();
@@ -118,6 +107,7 @@ public class BattleScreen extends AnchorPane{
             getScene().setRoot(vicScreen);
         } else {
             rebuildHand();
+            buildEnemyIntent();
         }
 
     }
@@ -139,8 +129,12 @@ public class BattleScreen extends AnchorPane{
             i++;
         }
     }
-    public void onNextScreenClick()throws Exception{
+    @FXML public void onNextScreenClick()throws Exception{
             getScene().setRoot(viewModel.handleNodeChange());
 
+    }
+    public void buildEnemyIntent(){
+        enemyIntentBox.getChildren().clear();
+        enemyIntentBox.getChildren().addAll(viewModel.getEnemyIntent());
     }
 }

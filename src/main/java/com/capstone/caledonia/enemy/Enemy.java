@@ -15,12 +15,14 @@ public class Enemy {
     protected Image enemySprite;
     protected ArrayList<Attack> attacks;
     protected Boolean isDead;
+    protected ArrayList<Attack> intent;
 
     public Enemy(int health) {
         this.health = health;
         this.maxHealth = health;
         this.block = 0;
         this.isDead = false;
+        this.intent = new ArrayList<>();
     }
 
     public ArrayList<Attack> generateAttacks() {
@@ -37,6 +39,7 @@ public class Enemy {
         this.attacks = generateAttacks();
         this.isDead = false;
         this.enemySprite = new Image(getClass().getResource("/SquidSprite.png").toExternalForm());
+        this.intent = new ArrayList<>();
     }
 
     public int getHealth() {
@@ -77,8 +80,9 @@ public class Enemy {
     }
 
     public void attackPlayer(Player player) {
-        int i = (int)(Math.random() * this.attacks.size());
-        this.attacks.get(i).useAttack(this, player);
+        for (Attack attack: intent){
+            attack.useAttack(this, player);
+        }
     }
 
     public void takeDamage(int dmg) {
@@ -100,6 +104,22 @@ public class Enemy {
 
     public Boolean getIsDead() {
         return isDead;
+    }
+
+    public ArrayList<Attack> getIntent() {
+        return intent;
+    }
+
+    public void addToIntent(Attack attack){
+        intent.add(attack);
+    }
+    public void clearIntent(){
+        intent.clear();
+    }
+
+    public void setIntent(){
+        int i = (int)(Math.random() * this.attacks.size());
+        addToIntent(attacks.get(i));
     }
 
     public void healHealth(int val) {
