@@ -8,4 +8,8 @@ public interface INode {
     AnchorPane buildView() throws Exception;
     int getTreasure();
     ICard getRewardCard();
+
+    ICard createRewardCard(int bonus);
+
+
 }

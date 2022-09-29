@@ -20,8 +20,8 @@ public class EnemyNode implements INode {
         Random rand = new Random();
         this.enemy = new Enemy();
         this.treasure = rand.nextInt(10, 50);
-        this.cardBuilder = new CardBuilder();
-        this.cardGenerated = cardBuilder.buildCard();
+//        this.cardBuilder = new CardBuilder();
+//        this.cardGenerated = cardBuilder.buildCard();
     }
 
     public Enemy getEnemy() {
@@ -37,7 +37,7 @@ public class EnemyNode implements INode {
     }
 
     public ICard getRewardCard() {
-        return this.cardGenerated;
+        return cardGenerated;
     }
 
     public void setTreasure(int treasure) {
@@ -48,6 +48,12 @@ public class EnemyNode implements INode {
     }
     public AnchorPane buildView() throws Exception{
         return new BattleScreen();
+    }
+
+    public ICard createRewardCard(int bonus) {
+        this.cardBuilder = new CardBuilder(bonus);
+        this.cardGenerated = cardBuilder.buildCard();
+        return cardGenerated;
     }
 
 }
