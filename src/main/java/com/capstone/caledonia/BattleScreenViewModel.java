@@ -1,12 +1,19 @@
 package com.capstone.caledonia;
 
+import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
+import com.capstone.caledonia.enemy.Attack;
 import com.capstone.caledonia.enemy.Enemy;
 import com.capstone.caledonia.node.EnemyNode;
 import converters.HPConverter;
 import javafx.beans.property.*;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
@@ -285,5 +292,23 @@ public class BattleScreenViewModel {
         boolean gameOver = game.endTurn();
         updateUI();
         return gameOver;
+    }
+    public ArrayList<Node> getEnemyIntent(){
+        ArrayList<Node> result = new ArrayList<>();
+        for (Attack attack: node.getEnemy().getIntent()){
+            Text damageAmount = new Text(String.valueOf(attack.getDamage()));
+            damageAmount.setFont(Font.font("Abaddon Bold", 18.0));
+            damageAmount.setFill(Color.WHITE);
+            ImageView damageIcon = new ImageView(new Image(getClass().getResource("/EnemyDamageIcon.png").toExternalForm()));
+            result.add(damageAmount);
+            result.add(damageIcon);
+            if (attack.getType()!= EffectType.DAMAGE){
+            Text effectAmount = new Text(String.valueOf(attack.getEffect()));
+            ImageView effectIcon = new ImageView(attack.getType().getTextIcon());
+            effectAmount.setFont(Font.font("Abaddon Bold", 18.0));
+            effectAmount.setFill(Color.WHITE);
+                result.add(effectAmount);
+                result.add(effectIcon);}}
+        return result;
     }
 }

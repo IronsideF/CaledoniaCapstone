@@ -1,15 +1,11 @@
 package com.capstone.caledonia.player;
 
 import com.capstone.caledonia.card.CardBuilder;
-import com.capstone.caledonia.card.CardBuilt;
-import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Enemy;
 import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class Player {
     private int health;
@@ -24,6 +20,7 @@ public class Player {
     private Image playerSprite;
     private Boolean isDead;
     private Bag bag;
+    private int cardsDrawnPerTurn;
 
     public Player() {
         this.health = 100;
@@ -38,6 +35,7 @@ public class Player {
         this.playerSprite = new Image(getClass().getResource("/IdleFrame1.png").toExternalForm());
         this.isDead = false;
         this.bag = new Bag();
+        this.cardsDrawnPerTurn = 4;
     }
 
     public Player(int health, int energy, Deck deck) {
@@ -113,6 +111,17 @@ public class Player {
     }
     public void setMaxEnergy(int amount){
         this.maxEnergy = amount;
+    }
+
+    public int getCardsDrawnPerTurn() {
+        return cardsDrawnPerTurn;
+    }
+
+    public void setCardsDrawnPerTurn(int cardsDrawnPerTurn) {
+        this.cardsDrawnPerTurn = cardsDrawnPerTurn;
+    }
+    public void incrementCardsDrawnPerTurn(){
+        this.cardsDrawnPerTurn++;
     }
 
     public void takeDamage(int dmg) {
@@ -203,7 +212,7 @@ public class Player {
     public void endTurn(){
         emptyHand();
         resetBlockAndEnergy();
-        drawCards(4);
+        drawCards(cardsDrawnPerTurn);
     }
 
     public void resetBlockAndEnergy() {

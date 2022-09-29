@@ -2,7 +2,6 @@ package com.capstone.caledonia.enemy;
 
 import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.player.Player;
-import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,5 +24,10 @@ public class Boss extends Enemy{
         this.attacks.get(i).useAttack(this, player);
         int j = (int)(Math.random() * this.attacks.size());
         this.attacks.get(j).useAttack(this, player);
+    }
+
+    public void setIntent(){
+        addToIntent(attacks.get((int)(Math.random() * this.attacks.size())));
+        addToIntent(attacks.get((int)(Math.random() * this.attacks.size())));
     }
 }

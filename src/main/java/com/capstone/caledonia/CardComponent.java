@@ -7,6 +7,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.converter.NumberStringConverter;
 
@@ -53,6 +55,10 @@ public class CardComponent extends AnchorPane {
         cardEffect = new Text();
         textIcon1 = new ImageView();
         textIcon2 = new ImageView();
+        cardDamage.setFill(Color.WHITE);
+        cardEffect.setFill(Color.WHITE);
+        cardDamage.setFont(Font.font("Abaddon Bold"));
+        cardEffect.setFont(Font.font("Abaddon Bold"));
         cardTextBox.getChildren().add(cardDamage);
         cardTextBox.getChildren().add(textIcon1);
         cardTextBox.getChildren().add(cardEffect);
