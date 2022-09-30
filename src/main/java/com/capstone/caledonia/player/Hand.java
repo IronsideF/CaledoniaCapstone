@@ -31,7 +31,7 @@ public class Hand {
     }
 
     public void drawToHand(Deck deck) {
-            if (this.hand.size() < 7) {
+            if (this.hand.size() <=7) {
                 this.hand.add(deck.drawCard());
             }
         }

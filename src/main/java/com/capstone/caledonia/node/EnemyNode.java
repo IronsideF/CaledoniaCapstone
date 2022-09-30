@@ -6,6 +6,7 @@ import com.capstone.caledonia.card.CardBuilder;
 import com.capstone.caledonia.card.CardGenerated;
 import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Enemy;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.Random;
@@ -15,11 +16,13 @@ public class EnemyNode implements INode {
     protected int treasure;
     protected CardBuilder cardBuilder;
     protected ICard cardGenerated;
+    protected Image icon;
 
     public EnemyNode() {
         Random rand = new Random();
         this.enemy = new Enemy();
         this.treasure = rand.nextInt(10, 50);
+        this.icon = new Image(getClass().getResource("/EnemyIcon.png").toExternalForm());
 //        this.cardBuilder = new CardBuilder();
 //        this.cardGenerated = cardBuilder.buildCard();
     }
@@ -45,6 +48,9 @@ public class EnemyNode implements INode {
     }
     public Enemy getContents(){
         return getEnemy();
+    }
+    public Image getIcon(){
+        return this.icon;
     }
     public AnchorPane buildView() throws Exception{
         return new BattleScreen();
