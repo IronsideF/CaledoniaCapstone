@@ -11,7 +11,7 @@ public class BossNode extends EnemyNode{
     public BossNode() {
         this.enemy = new Boss();
         this.treasure = 500;
-        this.cardBuilder = new CardBuilder();
+        this.cardBuilder = new CardBuilder(1);
         this.cardGenerated = cardBuilder.buildCard();
     }
 }

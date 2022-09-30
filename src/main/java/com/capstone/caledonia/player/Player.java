@@ -138,9 +138,9 @@ public class Player {
     }
 
     private Deck generateStarterDeck(){
-        CardBuilder builder = new CardBuilder();
+        CardBuilder builder = new CardBuilder(0);
         ArrayList<ICard> result = new ArrayList<>();
-        for (int i = 0; i<10; i++) {
+        for (int i = 0; i<15; i++) {
             result.add(builder.buildCard());
         }
         Collections.shuffle(result);

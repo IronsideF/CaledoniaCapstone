@@ -1,5 +1,7 @@
 package com.capstone.caledonia.card;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
@@ -8,22 +10,24 @@ public class CardBuilder {
     private ArrayList<CardEff> cardEffs;
     private static final SecureRandom random = new SecureRandom();
 
-    public CardBuilder() {
-        this.cardDmgs = generateCardDamages();
-        this.cardEffs = generateCardEffects();
+    public CardBuilder(int bonus) {
+        this.cardEffs = generateCardEffects(bonus);
+        this.cardDmgs = generateCardDamages(bonus);
     }
 
-    public ArrayList<CardDmg> generateCardDamages() {
+    public ArrayList<CardDmg> generateCardDamages(int bonus) {
         ArrayList<CardDmg> result = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             int cost;
-            int damage = (int)(Math.random() * 10);
-            if (damage <= 3) {
+            int damage = ((int)(Math.random() * 6) + 1 + bonus);
+            if (damage <= 2) {
                 cost = 0;
-            } else if (damage >= 7) {
+            } else if (damage > 2 && damage <= 5) {
+                cost = 1;
+            } else if (damage > 5 && damage <= 8){
                 cost = 2;
             } else {
-                cost = 1;
+                cost = 3;
             }
             CardDmg cardDmg = new CardDmg(damage, cost);
             result.add(cardDmg);
@@ -31,23 +35,25 @@ public class CardBuilder {
         return result;
     }
 
-    public ArrayList<CardEff> generateCardEffects() {
+    public ArrayList<CardEff> generateCardEffects(int bonus) {
         ArrayList<CardEff> result = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             int cost;
-            int effect = (int)(Math.random() * 7);
+            int effect = ((int)(Math.random() * 7) + 1 + bonus);
             EffectType type = randomEnum(EffectType.class);
-            if (effect >= 5) {
-                cost = 2;
+            if (effect > 2 && effect <= 5) {
+                cost = 1;
             } else if (effect <= 2) {
                 cost = 0;
+            } else if (effect > 5 && effect <= 8){
+                cost = 2;
             } else {
-                cost = 1;
+                cost = 3;
             }
             if (type == EffectType.HEAL) {
                 cost += 1;
             } else if (type == EffectType.DAMAGE) {
-                effect *= 2;
+                effect *= 1.5;
             }
             CardEff cardEff = new CardEff(effect, cost, type);
             result.add(cardEff);

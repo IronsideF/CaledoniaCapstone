@@ -1,5 +1,8 @@
 package com.capstone.caledonia.player;
 
+import com.capstone.caledonia.card.CardBuilt;
+import com.capstone.caledonia.card.CardGenerated;
+import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
 
 import java.util.ArrayList;

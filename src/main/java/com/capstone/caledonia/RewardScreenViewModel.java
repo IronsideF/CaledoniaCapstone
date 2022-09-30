@@ -25,13 +25,14 @@ public class RewardScreenViewModel {
         this.treasureCount.set(treasureCount);
     }
     public CardComponent getRewardCard()throws Exception{
-        return new CardComponent(game.gameMap.getCurrentNode().getRewardCard());
+        return new CardComponent(game.gameMap.getCurrentNode().createRewardCard(game.gameMap.getPlayerPosition()));
     }
     public void collectTreasure(){
         game.player.addTreasure(getTreasureCount());
     }
     public void collectRewardCard(){
-        game.player.getDeck().addCard(game.gameMap.getCurrentNode().getRewardCard());
+        System.out.println(game.gameMap.getPlayerPosition() + " player position");
+        game.player.getDeck().addCard(game.gameMap.getCurrentNode().createRewardCard(game.gameMap.getPlayerPosition()));
     }
     public AnchorPane handleNodeChange()throws Exception{
         return game.advanceToNextNode();
