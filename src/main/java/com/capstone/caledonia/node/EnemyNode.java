@@ -14,7 +14,7 @@ public class EnemyNode implements INode {
     protected Enemy enemy;
     protected int treasure;
     protected CardBuilder cardBuilder;
-    protected CardGenerated cardGenerated;
+    protected ICard cardGenerated;
 
     public EnemyNode() {
         Random rand = new Random();
