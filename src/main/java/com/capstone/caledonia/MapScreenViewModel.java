@@ -15,8 +15,8 @@ public class MapScreenViewModel {
         for (INode node: nodes){
             ImageView nodeIcon = new ImageView(node.getIcon());
             if(node == game.gameMap.getCurrentNode()){
-                nodeIcon.setScaleX(1.3);
-                nodeIcon.setScaleY(1.3);
+                nodeIcon.setScaleX(1.5);
+                nodeIcon.setScaleY(1.5);
             }
             result.add(nodeIcon);
             if(nodes.indexOf(node)!=nodes.size()-1){
