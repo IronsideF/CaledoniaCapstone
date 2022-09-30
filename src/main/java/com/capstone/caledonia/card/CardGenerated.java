@@ -53,8 +53,10 @@ public class CardGenerated implements ICard{
             player.addArmour(this.cardEff.getEffect());
         } else if (this.cardEff.getType() == EffectType.DAMAGE) {
             dmg += this.cardEff.getEffect();
-        } else {
+        } else if (this.cardEff.getType() == EffectType.HEAL) {
             player.healHealth(this.cardEff.getEffect());
+        } else {
+            player.drawCards(this.cardEff.getEffect());
         }
             this.dealDamage(dmg, enemy);
     }

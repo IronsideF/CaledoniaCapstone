@@ -15,7 +15,7 @@ import java.util.Random;
 public class TreasureNode implements INode{
     private int treasure;
     private CardBuilder cardBuilder;
-    private CardGenerated cardGenerated;
+    private ICard cardGenerated;
     private CardGenerated cardGenerated2;
     private CardGenerated cardGenerated3;
     private ArrayList<CardGenerated> cardGenerateds;
