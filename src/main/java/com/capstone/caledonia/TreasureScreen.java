@@ -35,4 +35,10 @@ public class TreasureScreen extends AnchorPane {
     @FXML private void onQuitButtonClick(){
         Platform.exit();
     }
+    @FXML public void handleDeckClick()throws Exception{
+        getChildren().add(new DeckScreen(this));
+    }
+    @FXML public void handleMapClick(){
+        System.out.println("Under Construction");
+    }
 }

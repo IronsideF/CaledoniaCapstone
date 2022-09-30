@@ -21,6 +21,7 @@ public class Player {
     private Boolean isDead;
     private Bag bag;
     private int cardsDrawnPerTurn;
+    private Deck permaDeck;
 
     public Player() {
         this.health = 100;
@@ -29,7 +30,7 @@ public class Player {
         this.maxEnergy = energy;
         this.treasure = 0;
         this.block = 0;
-        this.deck = generateStarterDeck();
+        generateStarterDeck();
         this.discard = new Discard();
         this.hand = new Hand();
         this.playerSprite = new Image(getClass().getResource("/IdleFrame1.png").toExternalForm());
@@ -73,6 +74,9 @@ public class Player {
 
     public Deck getDeck() {
         return deck;
+    }
+    public void setDeck(Deck deck){
+        this.deck = deck;
     }
 
     public Boolean getDead() {
@@ -124,6 +128,14 @@ public class Player {
         this.cardsDrawnPerTurn++;
     }
 
+    public Deck getPermaDeck() {
+        return permaDeck;
+    }
+
+    public void setPermaDeck(Deck permaDeck) {
+        this.permaDeck = permaDeck;
+    }
+
     public void takeDamage(int dmg) {
         if (this.block >= dmg) {
             this.block -= dmg;
@@ -137,14 +149,19 @@ public class Player {
         }
     }
 
-    private Deck generateStarterDeck(){
+    private void generateStarterDeck(){
         CardBuilder builder = new CardBuilder(0);
         ArrayList<ICard> result = new ArrayList<>();
+        ArrayList<ICard> permaResult = new ArrayList<>();
         for (int i = 0; i<15; i++) {
-            result.add(builder.buildCard());
+            ICard card = builder.buildCard();
+            result.add(card);
+            permaResult.add(card);
         }
+        this.permaDeck = new Deck(permaResult);
         Collections.shuffle(result);
-        return new Deck(result);
+        this.deck = new Deck(result);
+
     }
 
     public void useCard(int index, Enemy enemy) {

@@ -137,4 +137,10 @@ public class BattleScreen extends AnchorPane{
         enemyIntentBox.getChildren().clear();
         enemyIntentBox.getChildren().addAll(viewModel.getEnemyIntent());
     }
+    @FXML public void handleDeckClick()throws Exception{
+        getChildren().add(new DeckScreen(this));
+    }
+    @FXML public void handleMapClick(){
+        System.out.println("Under Construction");
+    }
 }
