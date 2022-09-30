@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane opacity="0.33" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Black;" />
+      <ScrollPane layoutX="64.0" layoutY="100.0" vbarPolicy="NEVER">
+         <content>
+            <AnchorPane fx:id="mapAnchor" maxWidth="672.0" prefHeight="400.0" prefWidth="672.0">
+               <children>
+                  <HBox fx:id="mapBox" alignment="CENTER" layoutY="136.0" prefHeight="128.0" prefWidth="672.0" spacing="10.0">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Button fx:id="exitButton" layoutX="70.0" layoutY="60.0" mnemonicParsing="false" onAction="#onExitClick" text="Exit">
+         <font>
+            <Font name="Abaddon Bold Regular" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</fx:root>

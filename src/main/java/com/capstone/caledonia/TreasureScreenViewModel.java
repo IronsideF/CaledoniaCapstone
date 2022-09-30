@@ -29,10 +29,4 @@ public class TreasureScreenViewModel {
     public void setPlayerSprite(Image playerSprite) {
         this.playerSprite.set(playerSprite);
     }
-    public AnchorPane collectTreasure()throws Exception{
-        System.out.println(game.gameMap.getPlayerPosition() + " player posi");
-        game.player.addTreasure(node.getTreasure());
-        game.player.getDeck().addCard(node.createRewardCard(game.gameMap.getPlayerPosition()));
-        return game.advanceToNextNode();
-    }
 }

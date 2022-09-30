@@ -22,8 +22,8 @@
       <ProgressBar fx:id="enemyHealth" layoutX="461.0" layoutY="254.0" prefWidth="200.0" progress="1.0" />
       <Button fx:id="confirmButton" layoutX="685.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleConfirmClick" prefHeight="42.0" prefWidth="83.0" text="End Turn" />
       <ProgressBar fx:id="playerHealth" layoutX="45.0" layoutY="254.0" prefWidth="200.0" progress="1.0" />
-      <Button fx:id="deckButton" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" text="Deck" />
-      <Button fx:id="mapButton" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" text="Map" />
+      <Button fx:id="deckButton" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeckClick" text="Deck" />
+      <Button fx:id="mapButton" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleMapClick" text="Map" />
       <Button fx:id="quitButton" layoutX="737.0" layoutY="14.0" mnemonicParsing="false" onAction="#onQuitButtonClick" text="Quit" />
       <HBox alignment="CENTER" layoutX="254.0" layoutY="300.0" prefHeight="34.0" prefWidth="68.0">
          <children>

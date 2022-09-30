@@ -6,7 +6,7 @@ public enum EffectType {
     HEAL("/CardHealArtIcon.png", "/CardHealTextIcon.png", "/CardBackgroundGreen.png"),
     ARMOUR("/CardBlockArtIcon.png", "/CardBlockTextIcon.png", "/CardBackgroundBlue.png"),
     DAMAGE("/CardDamageArtIcon.png", "/CardDamageTextIcon.png", "/CardBackgroundRed.png"),
-    DRAW("/CardDamageArtIcon.png", "/CardDamageTextIcon.png", "/CardBackgroundBlue.png");
+    DRAW("/CardDrawArtIcon.png", "/CardDrawTextIcon.png", "/CardBackgroundYellow.png");
 
     private Image icon;
     private Image textIcon;
