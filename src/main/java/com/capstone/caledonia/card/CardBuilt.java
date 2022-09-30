@@ -42,8 +42,10 @@ public class CardBuilt implements ICard{
             player.addArmour(this.effect);
         } else if (this.type == EffectType.DAMAGE) {
             this.dmg += this.effect;
+        } else if (this.getType() == EffectType.HEAL) {
+            player.healHealth(this.getEffect());
         } else {
-            player.healHealth(this.effect);
+            player.drawCards(this.getEffect());
         }
             this.dealDamage(this.dmg, enemy);
     }

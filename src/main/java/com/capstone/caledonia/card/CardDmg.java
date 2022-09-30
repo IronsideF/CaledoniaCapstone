@@ -24,4 +24,11 @@ public class CardDmg {
     public Image getIcon() {
         return icon;
     }
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
 }

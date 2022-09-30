@@ -39,8 +39,14 @@ public class CardBuilder {
         ArrayList<CardEff> result = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
             int cost;
-            int effect = ((int)(Math.random() * 7) + 1 + bonus);
+            int effect;
             EffectType type = randomEnum(EffectType.class);
+            if (type == EffectType.DRAW) {
+                effect = ((int) (Math.random() * 2) + 1 + (bonus / 3));
+
+            } else {
+                effect = ((int)(Math.random() * 7) + 1 + bonus);
+            }
             if (effect > 2 && effect <= 5) {
                 cost = 1;
             } else if (effect <= 2) {
@@ -93,6 +99,11 @@ public class CardBuilder {
     }
 
     public CardGenerated buildCard() {
-        return new CardGenerated(this.getRandomDmg(), this.getRandomEff());
+        CardGenerated card = new CardGenerated(this.getRandomDmg(), this.getRandomEff());
+        if (card.getCardEff().getType() == EffectType.DRAW) {
+            card.getCardDmg().setCost(0);
+            card.getCardDmg().setDamage(0);
+        }
+        return card;
     }
 }

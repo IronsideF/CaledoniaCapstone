@@ -5,7 +5,8 @@ import javafx.scene.image.Image;
 public enum EffectType {
     HEAL("/CardHealArtIcon.png", "/CardHealTextIcon.png", "/CardBackgroundGreen.png"),
     ARMOUR("/CardBlockArtIcon.png", "/CardBlockTextIcon.png", "/CardBackgroundBlue.png"),
-    DAMAGE("/CardDamageArtIcon.png", "/CardDamageTextIcon.png", "/CardBackgroundRed.png");
+    DAMAGE("/CardDamageArtIcon.png", "/CardDamageTextIcon.png", "/CardBackgroundRed.png"),
+    DRAW("/CardDamageArtIcon.png", "/CardDamageTextIcon.png", "/CardBackgroundBlue.png");
 
     private Image icon;
     private Image textIcon;
