@@ -33,7 +33,7 @@ public class Player {
         generateStarterDeck();
         this.discard = new Discard();
         this.hand = new Hand();
-        this.playerSprite = new Image(getClass().getResource("/IdleFrame1.png").toExternalForm());
+        this.playerSprite = new Image(getClass().getResource("/RedWitchIdle.gif").toExternalForm());
         this.isDead = false;
         this.bag = new Bag();
         this.cardsDrawnPerTurn = 4;

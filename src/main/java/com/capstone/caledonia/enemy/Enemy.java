@@ -38,7 +38,7 @@ public class Enemy {
         this.block = 0;
         this.attacks = generateAttacks();
         this.isDead = false;
-        this.enemySprite = new Image(getClass().getResource("/SquidSprite.png").toExternalForm());
+        this.enemySprite = new Image(getClass().getResource("/RedWormIdle.gif").toExternalForm());
         this.intent = new ArrayList<>();
     }
 
