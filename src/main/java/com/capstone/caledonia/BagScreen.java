@@ -4,45 +4,39 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 
+public class BagScreen extends AnchorPane{
 
-public class DeckScreen extends AnchorPane {
-    @FXML private AnchorPane shadow;
-    @FXML private ScrollPane cardScroller;
-    @FXML private AnchorPane gridAnchor;
-    @FXML private Button exit;
-    @FXML private VBox cardBox;
-    @FXML private ImageView bagButton;
+    @FXML
+    private VBox bagBox;
+    @FXML private Button closeButton;
+    private BagScreenViewModel viewModel = new BagScreenViewModel();
     private AnchorPane parent;
-    private DeckScreenViewModel viewModel = new DeckScreenViewModel();
 
-    public DeckScreen(AnchorPane parent)throws Exception{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("DeckScreen.fxml"));
+    public BagScreen(AnchorPane parent)throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("BagScreen.fxml"));
         loader.setController(this);
         loader.setRoot(this);
         loader.load();
         this.parent = parent;
-        populateCardGrid();
+        populateBag();
     }
 
-    public void handleExitClick(){
+    @FXML public void onCloseClick(){
         parent.getChildren().remove(this);
     }
-    public void populateCardGrid() throws Exception{
+    public void populateBag()throws Exception{
         ArrayList<HBox> cardRows = new ArrayList<>();
         HBox cardRow = new HBox();
         cardRow.setAlignment(Pos.CENTER);
-        ArrayList<CardComponent> cardList = viewModel.generateGridCards();
+        ArrayList<CardComponent> cardList = viewModel.generateBagContents();
         for (CardComponent card: cardList){
-            if (cardRow.getChildren().size()<4){
+            if (cardRow.getChildren().size()<2){
                 cardRow.getChildren().add(card);
             } else {
                 cardRows.add(cardRow);
@@ -54,10 +48,7 @@ public class DeckScreen extends AnchorPane {
                 cardRows.add(cardRow);
             }
         }
-        cardBox.getChildren().addAll(cardRows);
-    }
-    @FXML public void onBagClick()throws Exception{
-        getChildren().add(new BagScreen(this));
+        bagBox.getChildren().addAll(cardRows);
     }
 
 }

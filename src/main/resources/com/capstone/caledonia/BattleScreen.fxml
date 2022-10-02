@@ -17,7 +17,7 @@
          </image>
       </ImageView>
       <HBox fx:id="cardBox" layoutX="54.0" layoutY="443.0" prefHeight="131.0" prefWidth="612.0" />
-      <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="100.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="100.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
          </ImageView>
       <ProgressBar fx:id="enemyHealth" layoutX="461.0" layoutY="254.0" prefWidth="200.0" progress="1.0" />
       <Button fx:id="confirmButton" layoutX="685.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleConfirmClick" prefHeight="42.0" prefWidth="83.0" text="End Turn" />
@@ -141,7 +141,7 @@
             <Font name="Abaddon Bold Regular" size="25.0" />
          </font>
       </Text>
-      <ImageView fx:id="enemySprite" fitHeight="150.0" fitWidth="200.0" layoutX="459.0" layoutY="277.0">
+      <ImageView fx:id="enemySprite" fitHeight="150.0" fitWidth="200.0" layoutX="461.0" layoutY="334.0">
             </ImageView>
       <HBox fx:id="enemyIntentBox" alignment="CENTER" layoutX="462.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" />
    </children>
