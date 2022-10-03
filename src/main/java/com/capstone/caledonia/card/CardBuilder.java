@@ -9,22 +9,25 @@ public class CardBuilder {
     private ArrayList<CardDmg> cardDmgs;
     private ArrayList<CardEff> cardEffs;
     private static final SecureRandom random = new SecureRandom();
+    private int enumIndex;
 
     public CardBuilder(int bonus) {
         this.cardEffs = generateCardEffects(bonus);
         this.cardDmgs = generateCardDamages(bonus);
+        this.enumIndex = 0;
     }
 
     public ArrayList<CardDmg> generateCardDamages(int bonus) {
         ArrayList<CardDmg> result = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 10; i++) {
             int cost;
-            int damage = ((int)(Math.random() * 6) + 1 + bonus);
+            int damage = ((int)(Math.random() * 7) + 2 + bonus);
+            damage -= (int)(Math.random()) * 3;
             if (damage <= 2) {
                 cost = 0;
-            } else if (damage > 2 && damage <= 5) {
+            } else if (damage > 2 && damage < 5) {
                 cost = 1;
-            } else if (damage > 5 && damage <= 8){
+            } else if (damage >= 5 && damage <= 10){
                 cost = 2;
             } else {
                 cost = 3;
@@ -37,24 +40,24 @@ public class CardBuilder {
 
     public ArrayList<CardEff> generateCardEffects(int bonus) {
         ArrayList<CardEff> result = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 10; i++) {
             int cost;
             int effect;
             EffectType type = randomEnum(EffectType.class);
             if (type == EffectType.DRAW) {
-                effect = ((int) (Math.random() * 2) + 1 + (bonus / 3));
+                effect = ((int)(Math.random() * 2) + 1 + (bonus / 3));
+                cost = effect;
+            } else {
+                effect = ((int)(Math.random() * 7) + 2 + bonus);
+                effect -= (int)(Math.random()) * 3;
 
-            } else {
-                effect = ((int)(Math.random() * 7) + 1 + bonus);
-            }
-            if (effect > 2 && effect <= 5) {
-                cost = 1;
-            } else if (effect <= 2) {
-                cost = 0;
-            } else if (effect > 5 && effect <= 8){
-                cost = 2;
-            } else {
-                cost = 3;
+                if (effect < 4) {
+                    cost = 1;
+                } else if (effect >= 4 && effect <= 9){
+                    cost = 2;
+                } else {
+                    cost = 3;
+                }
             }
             if (type == EffectType.HEAL) {
                 cost += 1;
@@ -67,9 +70,12 @@ public class CardBuilder {
         return result;
     }
 
-    public static <T extends Enum<EffectType>> T randomEnum(Class<T> clazz){
-        int x = random.nextInt(clazz.getEnumConstants().length);
-        return clazz.getEnumConstants()[x];
+    public <T extends Enum<EffectType>> T randomEnum(Class<T> clazz){
+        this.enumIndex += 1;
+        if (this.enumIndex > 3) {
+            this.enumIndex = 0;
+        }
+        return clazz.getEnumConstants()[this.enumIndex];
     }
 
     public ArrayList<CardDmg> getCardDmgs() {
@@ -99,11 +105,12 @@ public class CardBuilder {
     }
 
     public CardGenerated buildCard() {
-        CardGenerated card = new CardGenerated(this.getRandomDmg(), this.getRandomEff());
-        if (card.getCardEff().getType() == EffectType.DRAW) {
-            card.getCardDmg().setCost(0);
-            card.getCardDmg().setDamage(0);
+        CardEff genEff = this.getRandomEff();
+        if (genEff.getType() == EffectType.DRAW) {
+            CardDmg dmg = new CardDmg(0,0);
+            return new CardGenerated(dmg, genEff);
+        } else {
+            return new CardGenerated(this.getRandomDmg(), genEff);
         }
-        return card;
     }
 }
