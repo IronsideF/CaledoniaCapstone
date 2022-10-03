@@ -9,7 +9,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 import javafx.util.converter.NumberStringConverter;
 
 public class RewardScreen extends AnchorPane {
@@ -53,7 +52,7 @@ public class RewardScreen extends AnchorPane {
     }
     @FXML
     private void handleOnwardsClick()throws Exception{
-        FadeTransition fadeTransition = Fades.fadeOut(parent);
+        FadeTransition fadeTransition = Animations.fadeOut(parent);
         fadeTransition.setOnFinished(evt -> {
             try {
                 getScene().setRoot(viewModel.handleNodeChange());

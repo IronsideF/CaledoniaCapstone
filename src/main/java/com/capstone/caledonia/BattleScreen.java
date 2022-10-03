@@ -1,6 +1,5 @@
 package com.capstone.caledonia;
 
-import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.event.Event;
@@ -12,7 +11,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 import javafx.util.converter.NumberStringConverter;
 
 import java.util.ArrayList;
@@ -66,7 +64,7 @@ public class BattleScreen extends AnchorPane{
         buildEnemyIntent();
         Background enemyIntentBackground = new Background(new BackgroundImage(new Image(getClass().getResource("/EnemyIntentBackground.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT));
         enemyIntentBox.setBackground(enemyIntentBackground);
-        Fades.fadeIn(this).play();
+        Animations.fadeIn(this).play();
     }
 
     private void bindViewModel(){

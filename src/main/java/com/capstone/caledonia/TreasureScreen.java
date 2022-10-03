@@ -1,13 +1,11 @@
 package com.capstone.caledonia;
 
 
-import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.util.Duration;
 
 public class TreasureScreen extends AnchorPane {
 
@@ -23,7 +21,7 @@ public class TreasureScreen extends AnchorPane {
         loader.setController(this);
         loader.load();
         bindViewModel();
-        Fades.fadeIn(this).play();
+        Animations.fadeIn(this).play();
     }
 
     TreasureScreenViewModel viewModel = new TreasureScreenViewModel();
