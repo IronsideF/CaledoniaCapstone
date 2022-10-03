@@ -10,6 +10,8 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.util.converter.NumberStringConverter;
 
@@ -107,6 +109,8 @@ public class BattleScreen extends AnchorPane{
     }
     @FXML
     private void handleConfirmClick()throws Exception{
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/UI_Click_1.wav").toExternalForm()));
+        mediaPlayer.play();
         if(viewModel.endTurn()){
             VictoryScreen vicScreen = new VictoryScreen("Defeat!");
             getScene().setRoot(vicScreen);

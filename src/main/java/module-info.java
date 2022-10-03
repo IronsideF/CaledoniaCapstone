@@ -7,6 +7,7 @@ module com.capstone.caledonia {
     requires com.almasb.fxgl.all;
     requires java.desktop;
     requires junit;
+    requires javafx.media;
 
     opens com.capstone.caledonia to javafx.fxml;
     exports com.capstone.caledonia;
