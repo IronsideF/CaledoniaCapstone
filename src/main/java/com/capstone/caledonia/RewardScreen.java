@@ -60,7 +60,9 @@ public class RewardScreen extends AnchorPane {
                 throw new RuntimeException(e);
             }
         });
-        fadeTransition.play();
+        MapScreen mapScreen = new MapScreen(this);
+        getChildren().add(mapScreen);
+        mapScreen.handleMapTransition(fadeTransition);
     }
 
 }

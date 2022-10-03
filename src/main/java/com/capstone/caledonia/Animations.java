@@ -3,11 +3,8 @@ package com.capstone.caledonia;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
-import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javafx.scene.Node;
-
-import java.util.ArrayList;
 
 public class Animations {
     public static FadeTransition fadeIn(Node node){
@@ -33,7 +30,7 @@ public class Animations {
         return scaleTransition;
     }
     public static ScaleTransition singlePulse(Node node){
-        ScaleTransition scaleTransition = new ScaleTransition(new Duration(500), node);
+        ScaleTransition scaleTransition = new ScaleTransition(new Duration(150), node);
         scaleTransition.setFromX(1);
         scaleTransition.setFromY(1);
         scaleTransition.setToX(1.5);
