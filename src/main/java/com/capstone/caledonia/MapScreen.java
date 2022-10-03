@@ -1,5 +1,6 @@
 package com.capstone.caledonia;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +37,23 @@ public class MapScreen extends AnchorPane{
     }
     public void populateMap(){
         mapBox.getChildren().addAll(viewModel.generateMap());
+    }
+
+    public void handleMapTransition(FadeTransition fadeOut){
+        viewModel.stopMapPulse();
+        mapBox.getChildren().clear();
+        mapBox.getChildren().addAll(viewModel.generateCurrentMap());
+        ScaleTransition scale1 = Animations.singlePulse(mapBox.getChildren().get(0));
+        ScaleTransition scale2 = Animations.singlePulse(mapBox.getChildren().get(1));
+        ScaleTransition scale3 = Animations.singlePulse(mapBox.getChildren().get(2));
+        ScaleTransition scale4 = Animations.singlePulse(mapBox.getChildren().get(3));
+        ScaleTransition scale5 = Animations.singlePulse(mapBox.getChildren().get(4));
+        scale1.setOnFinished(evt -> scale2.play());
+        scale2.setOnFinished(evt->scale3.play());
+        scale3.setOnFinished(evt->scale4.play());
+        scale4.setOnFinished(evt->scale5.play());
+        scale5.setOnFinished(evt->fadeOut.play());
+        scale1.play();
     }
 }
 

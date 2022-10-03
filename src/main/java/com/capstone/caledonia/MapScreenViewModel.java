@@ -1,6 +1,7 @@
 package com.capstone.caledonia;
 
 import com.capstone.caledonia.node.INode;
+import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -51,4 +52,5 @@ public class MapScreenViewModel {
         }
         return result;
     }
+
 }
