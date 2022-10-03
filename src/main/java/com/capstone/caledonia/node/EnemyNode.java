@@ -18,9 +18,9 @@ public class EnemyNode implements INode {
     protected ICard cardGenerated;
     protected Image icon;
 
-    public EnemyNode() {
+    public EnemyNode(int bonus) {
         Random rand = new Random();
-        this.enemy = new Enemy();
+        this.enemy = new Enemy(bonus);
         this.treasure = rand.nextInt(10, 50);
         this.icon = new Image(getClass().getResource("/EnemyIcon.png").toExternalForm());
 //        this.cardBuilder = new CardBuilder();

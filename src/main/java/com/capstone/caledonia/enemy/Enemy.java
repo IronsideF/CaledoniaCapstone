@@ -17,18 +17,17 @@ public class Enemy {
     protected Boolean isDead;
     protected ArrayList<Attack> intent;
 
-    public Enemy(int health) {
-        this.health = health;
-        this.maxHealth = health;
-        this.block = 0;
-        this.isDead = false;
-        this.intent = new ArrayList<>();
-    }
-
     public ArrayList<Attack> generateAttacks() {
         Attack attack1 = new Attack(9, EffectType.ARMOUR, 6);
         Attack attack2 = new Attack(13, EffectType.DAMAGE, 0);
         Attack attack3 = new Attack(6, EffectType.HEAL, 7);
+        return new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
+    }
+
+    public ArrayList<Attack> generateAttacks(int bonus) {
+        Attack attack1 = new Attack((int)(Math.random() * 6 + 3 + bonus), EffectType.ARMOUR, (int)(Math.random() * 3 + 3 + bonus));
+        Attack attack2 = new Attack((int)(Math.random() * 10 + 3 + bonus) , EffectType.DAMAGE, 0);
+        Attack attack3 = new Attack((int)(Math.random() * 6 + 3 + bonus), EffectType.HEAL, (int)(Math.random() * 4 + 3 + bonus));
         return new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
     }
 
@@ -37,6 +36,17 @@ public class Enemy {
         this.maxHealth = health;
         this.block = 0;
         this.attacks = generateAttacks();
+        this.isDead = false;
+        this.enemySprite = new Image(getClass().getResource("/RedWormIdle.gif").toExternalForm());
+        this.intent = new ArrayList<>();
+    }
+
+
+    public Enemy(int bonus) {
+        this.health = (int)((Math.random() * ((bonus + 1) * 10) + ((bonus + 1) * 5)));
+        this.maxHealth = health;
+        this.block = 0;
+        this.attacks = generateAttacks(bonus);
         this.isDead = false;
         this.enemySprite = new Image(getClass().getResource("/RedWormIdle.gif").toExternalForm());
         this.intent = new ArrayList<>();
