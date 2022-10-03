@@ -1,11 +1,17 @@
 package com.capstone.caledonia;
 
+import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MapScreen extends AnchorPane{
     @FXML
@@ -31,5 +37,5 @@ public class MapScreen extends AnchorPane{
     public void populateMap(){
         mapBox.getChildren().addAll(viewModel.generateMap());
     }
-
 }
+

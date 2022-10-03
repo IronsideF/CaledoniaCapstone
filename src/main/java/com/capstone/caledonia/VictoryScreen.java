@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 
 public class VictoryScreen extends AnchorPane {
 
@@ -25,7 +24,7 @@ public class VictoryScreen extends AnchorPane {
         loader.setController(this);
         loader.load();
         victoryMessage.textProperty().set(message);
-        Fades.fadeIn(this).play();
+        Animations.fadeIn(this).play();
     }
 
     VictoryScreenViewModel viewModel = new VictoryScreenViewModel();
@@ -36,7 +35,7 @@ public class VictoryScreen extends AnchorPane {
     }
     @FXML
     protected void handlePlayAgainClick()throws Exception{
-        FadeTransition fadeTransition = Fades.fadeOut(this);
+        FadeTransition fadeTransition = Animations.fadeOut(this);
         fadeTransition.setOnFinished(evt -> {
             try {
                 getScene().setRoot(viewModel.restartGame());
