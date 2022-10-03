@@ -1,5 +1,6 @@
 package com.capstone.caledonia;
 
+import javafx.animation.FadeTransition;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import javafx.util.converter.NumberStringConverter;
 
 public class RewardScreen extends AnchorPane {
@@ -17,8 +19,9 @@ public class RewardScreen extends AnchorPane {
     @FXML private Button onwardsButton;
     private CardComponent rewardCard;
     private final RewardScreenViewModel viewModel = new RewardScreenViewModel();
+    private AnchorPane parent;
 
-    RewardScreen()throws Exception{
+    RewardScreen(AnchorPane parent)throws Exception{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("RewardScreen.fxml"));
         loader.setRoot(this);
@@ -26,6 +29,7 @@ public class RewardScreen extends AnchorPane {
         loader.load();
         bindViewModel();
         addRewardCard();
+        this.parent = parent;
     }
 
     private void bindViewModel(){
@@ -49,7 +53,15 @@ public class RewardScreen extends AnchorPane {
     }
     @FXML
     private void handleOnwardsClick()throws Exception{
-        getScene().setRoot(viewModel.handleNodeChange());
+        FadeTransition fadeTransition = Fades.fadeOut(parent);
+        fadeTransition.setOnFinished(evt -> {
+            try {
+                getScene().setRoot(viewModel.handleNodeChange());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        fadeTransition.play();
     }
 
 }

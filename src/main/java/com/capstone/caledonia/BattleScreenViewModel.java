@@ -5,7 +5,7 @@ import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Attack;
 import com.capstone.caledonia.enemy.Enemy;
 import com.capstone.caledonia.node.EnemyNode;
-import converters.HPConverter;
+import com.capstone.caledonia.converters.HPConverter;
 import javafx.beans.property.*;
 import javafx.scene.Node;
 import javafx.scene.image.Image;

@@ -1,5 +1,6 @@
 package com.capstone.caledonia;
 
+import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 public class VictoryScreen extends AnchorPane {
 
@@ -23,6 +25,7 @@ public class VictoryScreen extends AnchorPane {
         loader.setController(this);
         loader.load();
         victoryMessage.textProperty().set(message);
+        Fades.fadeIn(this).play();
     }
 
     VictoryScreenViewModel viewModel = new VictoryScreenViewModel();
@@ -33,7 +36,15 @@ public class VictoryScreen extends AnchorPane {
     }
     @FXML
     protected void handlePlayAgainClick()throws Exception{
-        getScene().setRoot(viewModel.restartGame());
+        FadeTransition fadeTransition = Fades.fadeOut(this);
+        fadeTransition.setOnFinished(evt -> {
+            try {
+                getScene().setRoot(viewModel.restartGame());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+        fadeTransition.play();
     }
 
 }
