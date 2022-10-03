@@ -6,6 +6,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -17,9 +19,10 @@
          </image>
       </ImageView>
       <HBox fx:id="cardBox" layoutX="54.0" layoutY="443.0" prefHeight="131.0" prefWidth="612.0" />
-      <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="100.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
-         </ImageView>
-      <ProgressBar fx:id="enemyHealth" layoutX="461.0" layoutY="254.0" prefWidth="200.0" progress="1.0" />
+      <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="101.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/RedWitchIdle.gif" />
+         </image></ImageView>
       <Button fx:id="confirmButton" layoutX="685.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleConfirmClick" prefHeight="42.0" prefWidth="83.0" text="End Turn" />
       <ProgressBar fx:id="playerHealth" layoutX="45.0" layoutY="254.0" prefWidth="200.0" progress="1.0" />
       <Button fx:id="deckButton" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeckClick" text="Deck" />
@@ -65,25 +68,6 @@
                </font>
             </Text>
             <Text fx:id="playerMaxHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="mHP">
-               <font>
-                  <Font name="Abaddon Bold Regular" size="13.0" />
-               </font>
-            </Text>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" layoutX="495.0" layoutY="248.0" prefHeight="34.0" prefWidth="133.0">
-         <children>
-            <Text fx:id="enemyHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="cHP">
-               <font>
-                  <Font name="Abaddon Bold Regular" size="13.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="/">
-               <font>
-                  <Font name="Abaddon Bold Regular" size="13.0" />
-               </font>
-            </Text>
-            <Text fx:id="enemyMaxHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="mHP">
                <font>
                   <Font name="Abaddon Bold Regular" size="13.0" />
                </font>
@@ -141,8 +125,39 @@
             <Font name="Abaddon Bold Regular" size="25.0" />
          </font>
       </Text>
-      <ImageView fx:id="enemySprite" fitHeight="150.0" fitWidth="200.0" layoutX="461.0" layoutY="334.0">
+      <VBox fx:id="enemyContainer" alignment="BOTTOM_CENTER" layoutX="451.0" layoutY="285.0">
+         <children>
+            <HBox fx:id="enemyIntentBox" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" />
+            <StackPane>
+               <children>
+                  <ProgressBar fx:id="enemyHealth" prefWidth="200.0" progress="1.0" />
+                  <HBox alignment="CENTER" prefHeight="34.0" prefWidth="133.0">
+                     <children>
+                        <Text fx:id="enemyHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="cHP">
+                           <font>
+                              <Font name="Abaddon Bold Regular" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+                           <font>
+                              <Font name="Abaddon Bold Regular" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="enemyMaxHealthInt" strokeType="OUTSIDE" strokeWidth="0.0" text="mHP">
+                           <font>
+                              <Font name="Abaddon Bold Regular" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+            <ImageView fx:id="enemySprite">
+               <image>
+                  <Image url="@images/RedWormIdle.gif" />
+               </image>
             </ImageView>
-      <HBox fx:id="enemyIntentBox" alignment="CENTER" layoutX="462.0" layoutY="195.0" prefHeight="50.0" prefWidth="200.0" />
+         </children>
+      </VBox>
    </children>
 </fx:root>

@@ -15,6 +15,8 @@ public class VictoryScreen extends AnchorPane {
     @FXML private Text victoryMessage;
     @FXML private Button quit;
     @FXML private Button playAgain;
+    @FXML private Text detailsMessage;
+    @FXML private Text treasureMessage;
 
 
     VictoryScreen(String message)throws Exception{
@@ -24,6 +26,7 @@ public class VictoryScreen extends AnchorPane {
         loader.setController(this);
         loader.load();
         victoryMessage.textProperty().set(message);
+        bindViewModel();
         Animations.fadeIn(this).play();
     }
 
@@ -44,6 +47,11 @@ public class VictoryScreen extends AnchorPane {
             }
         });
         fadeTransition.play();
+    }
+
+    private void bindViewModel(){
+        detailsMessage.textProperty().bindBidirectional(viewModel.detailsProperty());
+        treasureMessage.textProperty().bindBidirectional(viewModel.treasureProperty());
     }
 
 }

@@ -4,9 +4,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -17,10 +17,24 @@
       </ImageView>
       <Button fx:id="playAgain" layoutX="250.0" layoutY="373.0" mnemonicParsing="false" onAction="#handlePlayAgainClick" text="Play Again?" />
       <Button fx:id="quit" layoutX="512.0" layoutY="373.0" mnemonicParsing="false" onAction="#handleQuitButtonClick" text="Quit" />
-      <Text fx:id="victoryMessage" layoutX="280.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!">
-         <font>
-            <Font name="Abaddon Bold Regular" size="36.0" />
-         </font>
-      </Text>
+      <VBox alignment="CENTER" layoutX="181.0" layoutY="207.0" prefHeight="41.0" prefWidth="314.0">
+         <children>
+            <Text fx:id="victoryMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations!">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="36.0" />
+               </font>
+            </Text>
+            <Text fx:id="detailsMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="You have Perished in your quest to slay the Fire Demon">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="treasureMessage" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Abaddon Bold Regular" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
    </children>
 </fx:root>
