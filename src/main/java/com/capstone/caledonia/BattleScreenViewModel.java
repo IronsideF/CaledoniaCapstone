@@ -4,6 +4,7 @@ import com.capstone.caledonia.card.EffectType;
 import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Attack;
 import com.capstone.caledonia.enemy.Enemy;
+import com.capstone.caledonia.node.BossNode;
 import com.capstone.caledonia.node.EnemyNode;
 import com.capstone.caledonia.converters.HPConverter;
 import javafx.beans.property.*;
@@ -310,5 +311,8 @@ public class BattleScreenViewModel {
                 result.add(effectAmount);
                 result.add(effectIcon);}}
         return result;
+    }
+    public boolean isBossNode(){
+        return node instanceof BossNode;
     }
 }

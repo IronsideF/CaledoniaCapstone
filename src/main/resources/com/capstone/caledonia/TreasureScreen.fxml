@@ -18,8 +18,10 @@
             <Image url="@images/TreasureChest.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="playerSprite" fitHeight="94.0" fitWidth="101.0" layoutX="117.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
-      </ImageView>
+      <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="103.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/RedWitchIdle.gif" />
+         </image></ImageView>
       <Button fx:id="quit" layoutX="657.0" layoutY="25.0" mnemonicParsing="false" onAction="#onQuitButtonClick" text="Quit" />
       <Button fx:id="deckButton" layoutX="62.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleDeckClick" text="Deck">
          <font>

@@ -52,6 +52,7 @@ public class BattleScreen extends AnchorPane{
     @FXML private Button nextScreen;
     @FXML private Text treasureCount;
     @FXML private HBox enemyIntentBox;
+    @FXML private VBox enemyContainer;
 
     private final BattleScreenViewModel viewModel = new BattleScreenViewModel();
     public BattleScreen()throws Exception{
@@ -64,6 +65,9 @@ public class BattleScreen extends AnchorPane{
         buildEnemyIntent();
         Background enemyIntentBackground = new Background(new BackgroundImage(new Image(getClass().getResource("/EnemyIntentBackground.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT));
         enemyIntentBox.setBackground(enemyIntentBackground);
+        if (viewModel.isBossNode()){
+            enemyContainer.setLayoutY(29);
+        }
         Animations.fadeIn(this).play();
     }
 

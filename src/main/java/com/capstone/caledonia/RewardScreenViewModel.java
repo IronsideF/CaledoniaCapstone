@@ -1,6 +1,7 @@
 package com.capstone.caledonia;
 
 import com.capstone.caledonia.card.ICard;
+import com.capstone.caledonia.node.BossNode;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.layout.AnchorPane;
@@ -49,5 +50,8 @@ public class RewardScreenViewModel {
     }
     public AnchorPane handleNodeChange()throws Exception{
         return game.advanceToNextNode();
+    }
+    public boolean isBossNode(){
+        return game.gameMap.getCurrentNode() instanceof BossNode;
     }
 }
