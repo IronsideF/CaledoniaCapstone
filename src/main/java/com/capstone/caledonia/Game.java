@@ -33,14 +33,12 @@ public class Game {
         ((EnemyNode)gameMap.getCurrentNode()).getEnemy().setIntent();
     }
 
-    public void moveCardFromDeckToBag(ICard card) {
-        player.getDeck().removeCard(card);
-        player.getBag().addCard(card);
+    public void moveCardFromDeckToBag(int index) {
+        player.getBag().addCard(player.getPermaDeck().removeCard(index));
     }
 
-    public void moveCardFromBagToDeck(ICard card) {
-        player.getBag().removeCard(card);
-        player.getDeck().addCard(card);
+    public void moveCardFromBagToDeck(int index) {
+        player.getPermaDeck().addCard(player.getBag().removeCard(index));
     }
 
     public AnchorPane advanceToNextNode()throws Exception{

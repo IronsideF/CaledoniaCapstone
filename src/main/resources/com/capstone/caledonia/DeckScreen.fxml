@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -25,10 +23,5 @@
             <Font name="Abaddon Bold Regular" size="13.0" />
          </font>
       </Button>
-      <ImageView fx:id="bagButton" fitHeight="36.0" fitWidth="30.0" layoutX="150.0" layoutY="60.0" onMouseClicked="#onBagClick" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/BagIcon.png" />
-         </image>
-      </ImageView>
    </children>
 </fx:root>
