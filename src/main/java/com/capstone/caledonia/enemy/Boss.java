@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Boss extends Enemy{
 
     public Boss() {
-        super(70);
+        super(11);
         this.attacks = generateAttacks();
     }
 
