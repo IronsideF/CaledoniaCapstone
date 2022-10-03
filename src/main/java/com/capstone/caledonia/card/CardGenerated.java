@@ -3,6 +3,7 @@ package com.capstone.caledonia.card;
 import com.capstone.caledonia.enemy.Enemy;
 import com.capstone.caledonia.player.Player;
 import javafx.scene.image.Image;
+import javafx.scene.media.MediaPlayer;
 
 public class CardGenerated implements ICard{
 
@@ -63,7 +64,9 @@ public class CardGenerated implements ICard{
         } else {
             player.drawCards(this.cardEff.getEffect());
         }
-            this.dealDamage(dmg, enemy);
+        MediaPlayer mediaPlayer = new MediaPlayer(cardEff.getType().getSoundFile());
+        mediaPlayer.play();
+        this.dealDamage(dmg, enemy);
     }
 
     public void dealDamage(int dmg, Enemy enemy) {

@@ -4,6 +4,9 @@ import com.capstone.caledonia.card.CardBuilder;
 import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.enemy.Enemy;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -183,6 +186,8 @@ public class Player {
                 this.resetDeckAndDiscard();
             }
             this.hand.drawToHand(this.drawPile);
+            MediaPlayer mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/GP_Draw_6.wav").toExternalForm()));
+            mediaPlayer.play();
             amount--;
         }
     }

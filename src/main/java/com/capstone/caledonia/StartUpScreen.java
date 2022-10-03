@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class StartUpScreen extends AnchorPane{
     @FXML
@@ -32,6 +34,8 @@ public class StartUpScreen extends AnchorPane{
 
     @FXML
     protected void onStartButtonClick() throws Exception{
+        MediaPlayer mediaPlayer = new MediaPlayer(new Media(getClass().getResource("/UI_Click_1.wav").toExternalForm()));
+        mediaPlayer.play();
         FadeTransition fadeTransition = Animations.fadeOut(this);
         fadeTransition.setOnFinished(evt -> {
             try {
