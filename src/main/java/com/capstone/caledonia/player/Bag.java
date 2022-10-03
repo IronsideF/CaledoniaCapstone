@@ -19,8 +19,7 @@ public class Bag {
         this.cards.add(card);
     }
 
-    public ICard removeCard(ICard card) {
-        this.cards.remove(card);
-        return card;
+    public ICard removeCard(int index) {
+        return this.cards.remove(index);
     }
 }

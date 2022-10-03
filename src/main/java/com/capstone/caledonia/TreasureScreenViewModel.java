@@ -4,7 +4,6 @@ import com.capstone.caledonia.node.TreasureNode;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 
 
 public class TreasureScreenViewModel {
@@ -16,6 +15,7 @@ public class TreasureScreenViewModel {
 
     TreasureScreenViewModel(){
         setPlayerSprite(game.player.getPlayerSprite());
+        game.player.reset();
     }
 
     public Image getPlayerSprite() {

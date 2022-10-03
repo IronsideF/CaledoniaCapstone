@@ -255,7 +255,7 @@ public class BattleScreenViewModel {
 
     }
     public void updateCardInfo(){
-        setDeckCount(game.player.getDeck().getCards().size());
+        setDeckCount(game.player.getDrawPile().getCards().size());
         setDiscardCount(game.player.getDiscard().getDiscard().size());
         setHandCount(game.player.getHand().getHand().size());
 

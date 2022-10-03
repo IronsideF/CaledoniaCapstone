@@ -18,4 +18,8 @@ public class BagScreenViewModel {
         }
         return result;
     }
+    public void moveCardToDeck(int index){
+        game.moveCardFromBagToDeck(index);
+
+    }
 }

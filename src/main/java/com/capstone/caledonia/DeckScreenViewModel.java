@@ -18,4 +18,8 @@ public class DeckScreenViewModel {
         }
         return result;
     }
+    public void moveCardToBag(int cardId){
+        if (game.player.getBag().getCards().size()<3){
+        game.moveCardFromDeckToBag(cardId);}
+    }
 }

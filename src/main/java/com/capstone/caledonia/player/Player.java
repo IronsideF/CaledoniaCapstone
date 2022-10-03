@@ -14,7 +14,7 @@ public class Player {
     private int maxEnergy;
     private int treasure;
     private int block;
-    private Deck deck;
+    private Deck drawPile;
     private Discard discard;
     private Hand hand;
     private Image playerSprite;
@@ -31,6 +31,7 @@ public class Player {
         this.treasure = 0;
         this.block = 0;
         generateStarterDeck();
+        generateDrawPile();
         this.discard = new Discard();
         this.hand = new Hand();
         this.playerSprite = new Image(getClass().getResource("/RedWitchIdle.gif").toExternalForm());
@@ -39,12 +40,12 @@ public class Player {
         this.cardsDrawnPerTurn = 4;
     }
 
-    public Player(int health, int energy, Deck deck) {
+    public Player(int health, int energy, Deck drawPile) {
         this.health = health;
         this.maxHealth = health;
         this.energy = energy;
         this.maxEnergy = energy;
-        this.deck = deck;
+        this.drawPile = drawPile;
         this.treasure = 0;
         this.block = 0;
         this.discard = new Discard();
@@ -72,11 +73,11 @@ public class Player {
         return block;
     }
 
-    public Deck getDeck() {
-        return deck;
+    public Deck getDrawPile() {
+        return drawPile;
     }
-    public void setDeck(Deck deck){
-        this.deck = deck;
+    public void setDrawPile(Deck drawPile){
+        this.drawPile = drawPile;
     }
 
     public Boolean getDead() {
@@ -152,16 +153,16 @@ public class Player {
     private void generateStarterDeck(){
         CardBuilder builder = new CardBuilder(0);
         ArrayList<ICard> result = new ArrayList<>();
-        ArrayList<ICard> permaResult = new ArrayList<>();
         for (int i = 0; i<15; i++) {
             ICard card = builder.buildCard();
             result.add(card);
-            permaResult.add(card);
         }
-        this.permaDeck = new Deck(permaResult);
+        this.permaDeck = new Deck(result);
+    }
+    public void generateDrawPile(){
+        ArrayList<ICard> result = new ArrayList<>(permaDeck.getCards());
         Collections.shuffle(result);
-        this.deck = new Deck(result);
-
+        setDrawPile(new Deck(result));
     }
 
     public void useCard(int index, Enemy enemy) {
@@ -177,11 +178,11 @@ public class Player {
 
     public void drawCards(int amount) {
         while (amount > 0) {
-            int deckSize = this.deck.getCards().size();
+            int deckSize = this.drawPile.getCards().size();
             if (deckSize <= 0) {
                 this.resetDeckAndDiscard();
             }
-            this.hand.drawToHand(this.deck);
+            this.hand.drawToHand(this.drawPile);
             amount--;
         }
     }
@@ -208,8 +209,9 @@ public class Player {
 
     public void resetDeckAndDiscard() {
         for (ICard card : this.discard.getDiscard()) {
-            this.deck.addCard(card);
+            this.drawPile.addCard(card);
         }
+        Collections.shuffle(drawPile.getCards());
         this.discard.emptyDiscard();
 
     }
@@ -225,6 +227,7 @@ public class Player {
         emptyHand();
         resetDeckAndDiscard();
         resetBlockAndEnergy();
+        generateDrawPile();
     }
     public void endTurn(){
         emptyHand();

@@ -34,7 +34,7 @@ public class RewardScreenViewModel {
         System.out.println(game.gameMap.getPlayerPosition() + " player position");
         ICard rewardCard = game.gameMap.getCurrentNode().createRewardCard(game.gameMap.getPlayerPosition());
         game.player.getPermaDeck().addCard(rewardCard);
-        game.player.getDeck().addCard(rewardCard);
+        game.player.getDrawPile().addCard(rewardCard);
     }
     public AnchorPane handleNodeChange()throws Exception{
         return game.advanceToNextNode();
