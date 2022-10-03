@@ -25,9 +25,9 @@ public class CardBuilder {
             damage -= (int)(Math.random()) * 3;
             if (damage <= 2) {
                 cost = 0;
-            } else if (damage > 2 && damage < 5) {
+            } else if (damage > 3 && damage < 7) {
                 cost = 1;
-            } else if (damage >= 5 && damage <= 10){
+            } else if (damage >= 7 && damage <= 11){
                 cost = 2;
             } else {
                 cost = 3;
@@ -50,10 +50,11 @@ public class CardBuilder {
             } else {
                 effect = ((int)(Math.random() * 7) + 2 + bonus);
                 effect -= (int)(Math.random()) * 3;
-
-                if (effect < 4) {
+                if (effect <= 2) {
+                    cost = 0;
+                } else if (effect > 3 && effect < 6) {
                     cost = 1;
-                } else if (effect >= 4 && effect <= 9){
+                } else if (effect >= 6 && effect <= 10){
                     cost = 2;
                 } else {
                     cost = 3;
