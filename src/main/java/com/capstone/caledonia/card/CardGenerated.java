@@ -13,6 +13,7 @@ public class CardGenerated implements ICard{
     private Image textIcon1;
     private Image textIcon2;
     private boolean doubleText;
+    private int damage;
 
 
     private int totalCost;
@@ -22,6 +23,10 @@ public class CardGenerated implements ICard{
         this.cardEff = cardEff;
         this.totalCost = this.findTotalCost();
         findImages();
+        if (this.cardEff.getType() == EffectType.DRAW) {
+            this.damage = 0;
+        }
+        this.damage = this.cardDmg.getDamage();
     }
 
     public CardDmg getCardDmg() {
@@ -48,7 +53,7 @@ public class CardGenerated implements ICard{
     }
 
     public void useEffect(Player player, Enemy enemy) {
-        int dmg = this.cardDmg.getDamage();
+        int dmg = this.damage;
         if (this.cardEff.getType() == EffectType.ARMOUR) {
             player.addArmour(this.cardEff.getEffect());
         } else if (this.cardEff.getType() == EffectType.DAMAGE) {
@@ -79,6 +84,10 @@ public class CardGenerated implements ICard{
     public EffectType getEffectType() {
         return this.cardEff.getType();
     }
+
+    public void setTotalCost(int cost) { this.totalCost = cost;}
+
+    public void setDamage(int damage) { this.damage = damage;}
 
 
     @Override
