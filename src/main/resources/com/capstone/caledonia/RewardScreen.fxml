@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.33" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: Black;" />
@@ -24,7 +23,7 @@
                   <Image url="@images/TreasureChest.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="69.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collect your treasure">
+            <Text fx:id="treasureText" fill="WHITE" layoutX="69.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collect your treasure">
                <font>
                   <Font name="Abaddon Bold Regular" size="18.0" />
                </font>
@@ -34,7 +33,7 @@
                   <Font name="Abaddon Bold Regular" size="18.0" />
                </font>
             </Text>
-            <VBox fx:id="cardRewardHolder" alignment="CENTER" layoutX="77.0" layoutY="165.0" prefHeight="134.0" prefWidth="133.0">
+            <VBox fx:id="cardRewardHolder" alignment="CENTER" layoutX="-5.0" layoutY="165.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Collect your card">
                      <font>

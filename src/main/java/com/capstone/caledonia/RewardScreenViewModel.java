@@ -10,9 +10,12 @@ import java.util.ArrayList;
 public class RewardScreenViewModel {
     private IntegerProperty treasureCount = new SimpleIntegerProperty();
     private final Game game = Game.getInstance();
+    private ArrayList<CardComponent> cardRewards = new ArrayList<>();
+    private ArrayList<ICard> rawRewards = game.gameMap.getCurrentNode().createArrayOfRewardCards(game.gameMap.getPlayerPosition());
 
-    RewardScreenViewModel(){
+    RewardScreenViewModel()throws Exception{
         setTreasureCount(game.gameMap.getCurrentNode().getTreasure());
+        generateRewardCards();
     }
 
     public int getTreasureCount() {
@@ -32,12 +35,17 @@ public class RewardScreenViewModel {
     public void collectTreasure(){
         game.player.addTreasure(getTreasureCount());
     }
-    public void collectRewardCard(){
-        ArrayList<ICard> rewards = game.gameMap.getCurrentNode().createArrayOfRewardCards(game.gameMap.getPlayerPosition());
-        for (ICard rewardCard : rewards) {
-            game.player.getPermaDeck().addCard(rewardCard);
-            game.player.getDrawPile().addCard(rewardCard);
+    public ArrayList<CardComponent> getCardRewards(){
+        return cardRewards;
+    }
+
+    public void generateRewardCards()throws Exception{
+        for (ICard card: rawRewards){
+            cardRewards.add(new CardComponent(card));
         }
+    }
+    public void collectRewardCard(int index){
+            game.player.getPermaDeck().addCard(rawRewards.get(index));
     }
     public AnchorPane handleNodeChange()throws Exception{
         return game.advanceToNextNode();

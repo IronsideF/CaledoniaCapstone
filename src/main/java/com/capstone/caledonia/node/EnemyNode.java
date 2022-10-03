@@ -47,9 +47,6 @@ public class EnemyNode implements INode {
     public void setTreasure(int treasure) {
         this.treasure = treasure;
     }
-    public Enemy getContents(){
-        return getEnemy();
-    }
     public Image getIcon(){
         return this.icon;
     }

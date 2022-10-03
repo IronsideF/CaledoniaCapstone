@@ -41,6 +41,7 @@ public class MapScreen extends AnchorPane{
 
     public void handleMapTransition(FadeTransition fadeOut){
         viewModel.stopMapPulse();
+        getChildren().remove(exitButton);
         mapBox.getChildren().clear();
         mapBox.getChildren().addAll(viewModel.generateCurrentMap());
         ScaleTransition scale1 = Animations.singlePulse(mapBox.getChildren().get(0));
