@@ -9,6 +9,7 @@ import com.capstone.caledonia.enemy.Enemy;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class EnemyNode implements INode {
@@ -60,6 +61,14 @@ public class EnemyNode implements INode {
         this.cardBuilder = new CardBuilder(bonus);
         this.cardGenerated = cardBuilder.buildCard();
         return cardGenerated;
+    }
+
+    public ArrayList<ICard> createArrayOfRewardCards(int bonus) {
+        ArrayList<ICard> rewards = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            rewards.add(createRewardCard(bonus));
+        }
+        return rewards;
     }
 
 }

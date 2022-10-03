@@ -53,6 +53,14 @@ public class TreasureNode implements INode{
         return this.cardGenerated;
     }
 
+    public ArrayList<ICard> createArrayOfRewardCards(int bonus) {
+        ArrayList<ICard> rewards = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            rewards.add(this.createRewardCard(bonus));
+        }
+        return rewards;
+    }
+
     public ArrayList<CardGenerated> getCardGenerateds() {
         return this.cardGenerateds;
     }

@@ -5,6 +5,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
+
 public class RewardScreenViewModel {
     private IntegerProperty treasureCount = new SimpleIntegerProperty();
     private final Game game = Game.getInstance();
@@ -31,10 +33,11 @@ public class RewardScreenViewModel {
         game.player.addTreasure(getTreasureCount());
     }
     public void collectRewardCard(){
-        System.out.println(game.gameMap.getPlayerPosition() + " player position");
-        ICard rewardCard = game.gameMap.getCurrentNode().createRewardCard(game.gameMap.getPlayerPosition());
-        game.player.getPermaDeck().addCard(rewardCard);
-        game.player.getDrawPile().addCard(rewardCard);
+        ArrayList<ICard> rewards = game.gameMap.getCurrentNode().createArrayOfRewardCards(game.gameMap.getPlayerPosition());
+        for (ICard rewardCard : rewards) {
+            game.player.getPermaDeck().addCard(rewardCard);
+            game.player.getDrawPile().addCard(rewardCard);
+        }
     }
     public AnchorPane handleNodeChange()throws Exception{
         return game.advanceToNextNode();
