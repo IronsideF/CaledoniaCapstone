@@ -315,4 +315,7 @@ public class BattleScreenViewModel {
     public boolean isBossNode(){
         return node instanceof BossNode;
     }
+    public boolean checkIfNight(){
+        return game.gameMap.getPlayerPosition()>5;
+    }
 }
