@@ -145,8 +145,8 @@ public class BattleScreen extends AnchorPane{
             i++;
         }
     }
-    @FXML public void onNextScreenClick()throws Exception{
-            getScene().setRoot(viewModel.handleNodeChange());
+    @FXML public void onNextScreenClick(){
+            viewModel.setEnemyToOne();
 
     }
     public void buildEnemyIntent(){
@@ -177,7 +177,7 @@ public class BattleScreen extends AnchorPane{
         enemyBlockBox.setLayoutX(360);
         enemyBlockBox.setLayoutY(300);
         enemyContainer.setLayoutX(451);
-        enemyContainer.setLayoutY(285);
+        enemyContainer.setLayoutY(250);
         background.setImage(new Image(getClass().getResource("/BattleBackground800x600.png").toExternalForm()));
         background.setFitHeight(576);
     }
