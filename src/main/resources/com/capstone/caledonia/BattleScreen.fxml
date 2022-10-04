@@ -11,24 +11,24 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<fx:root prefHeight="600.0" prefWidth="800.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="576.0" prefWidth="800.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="background" fitHeight="600.0" fitWidth="800.0">
+      <ImageView fx:id="background" fitHeight="576.0" fitWidth="800.0">
          <image>
-            <Image url="@images/BattleBackground800x600.png" />
+            <Image url="@images/SunnyScene.png" />
          </image>
       </ImageView>
       <HBox fx:id="cardBox" layoutX="54.0" layoutY="443.0" prefHeight="131.0" prefWidth="612.0" />
-      <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="101.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="playerSprite" fitHeight="150.0" fitWidth="150.0" layoutX="120.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/RedWitchIdle.gif" />
          </image></ImageView>
       <Button fx:id="confirmButton" layoutX="685.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleConfirmClick" prefHeight="42.0" prefWidth="83.0" text="End Turn" />
-      <ProgressBar fx:id="playerHealth" layoutX="45.0" layoutY="254.0" prefWidth="200.0" progress="1.0" />
+      <ProgressBar fx:id="playerHealth" layoutX="65.0" layoutY="209.0" prefWidth="200.0" progress="1.0" />
       <Button fx:id="deckButton" layoutX="54.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleDeckClick" text="Deck" />
       <Button fx:id="mapButton" layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleMapClick" text="Map" />
       <Button fx:id="quitButton" layoutX="737.0" layoutY="14.0" mnemonicParsing="false" onAction="#onQuitButtonClick" text="Quit" />
-      <HBox alignment="CENTER" layoutX="254.0" layoutY="300.0" prefHeight="34.0" prefWidth="68.0">
+      <HBox fx:id="playerBlockBox" alignment="CENTER" layoutX="261.0" layoutY="235.0" prefHeight="34.0" prefWidth="68.0">
          <children>
             <ImageView fitHeight="59.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,7 +41,7 @@
                </font></Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="360.0" layoutY="300.0" prefHeight="34.0" prefWidth="55.0">
+      <HBox fx:id="enemyBlockBox" alignment="CENTER" layoutX="528.0" layoutY="337.0" prefHeight="34.0" prefWidth="55.0">
          <children>
             <Text fx:id="enemyBlock" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
@@ -55,7 +55,7 @@
             </ImageView>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="94.0" layoutY="248.0" prefHeight="34.0" prefWidth="103.0">
+      <HBox fx:id="healthNumbers" alignment="CENTER" layoutX="114.0" layoutY="203.0" prefHeight="34.0" prefWidth="103.0">
          <children>
             <Text fx:id="playerHealthInt" fill="#030000" strokeType="OUTSIDE" strokeWidth="0.0" text="cHP">
                <font>
@@ -110,22 +110,22 @@
             <Font name="Abaddon Bold Regular" size="13.0" />
          </font>
       </Text>
-      <Text fx:id="energy" fill="#fffefe" layoutX="109.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" wrappingWidth="18.6875">
+      <Text fx:id="energy" fill="#fffefe" layoutX="120.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" wrappingWidth="18.6875">
          <font>
             <Font name="Abaddon Bold Regular" size="25.0" />
          </font>
       </Text>
-      <Text fx:id="maxEnergy" fill="WHITE" layoutX="138.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
+      <Text fx:id="maxEnergy" fill="WHITE" layoutX="170.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5">
          <font>
             <Font name="Abaddon Bold Regular" size="25.0" />
          </font>
       </Text>
-      <Text fill="#fffefe" layoutX="123.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
+      <Text fx:id="energySlash" fill="#fffefe" layoutX="145.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="/">
          <font>
             <Font name="Abaddon Bold Regular" size="25.0" />
          </font>
       </Text>
-      <VBox fx:id="enemyContainer" alignment="BOTTOM_CENTER" layoutX="451.0" layoutY="285.0">
+      <VBox fx:id="enemyContainer" alignment="BOTTOM_CENTER" layoutX="585.0" layoutY="280.0">
          <children>
             <HBox fx:id="enemyIntentBox" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" />
             <StackPane>

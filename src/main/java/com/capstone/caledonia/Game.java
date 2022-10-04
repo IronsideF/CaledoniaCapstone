@@ -47,6 +47,9 @@ public class Game {
             if (gameMap.getCurrentNode() instanceof TreasureNode){
                 player.setMaxEnergy(player.getMaxEnergy()+1);
                 player.incrementCardsDrawnPerTurn();
+                if (gameMap.getPlayerPosition()<6){
+                    return new SunnyTreasureScreen();
+                }
             }
             return gameMap.getCurrentNode().buildView();
         }

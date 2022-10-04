@@ -55,6 +55,10 @@ public class BattleScreen extends AnchorPane{
     @FXML private Text treasureCount;
     @FXML private HBox enemyIntentBox;
     @FXML private VBox enemyContainer;
+    @FXML private HBox healthNumbers;
+    @FXML private Text energySlash;
+    @FXML private HBox playerBlockBox;
+    @FXML private HBox enemyBlockBox;
 
     private final BattleScreenViewModel viewModel = new BattleScreenViewModel();
     public BattleScreen()throws Exception{
@@ -67,6 +71,9 @@ public class BattleScreen extends AnchorPane{
         buildEnemyIntent();
         Background enemyIntentBackground = new Background(new BackgroundImage(new Image(getClass().getResource("/EnemyIntentBackground.png").toExternalForm()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT));
         enemyIntentBox.setBackground(enemyIntentBackground);
+        if (viewModel.checkIfNight()){
+            setNightPositions();
+        }
         if (viewModel.isBossNode()){
             enemyContainer.setLayoutY(29);
         }
@@ -151,5 +158,27 @@ public class BattleScreen extends AnchorPane{
     }
     @FXML public void handleMapClick()throws Exception{
         getChildren().add(new MapScreen(this));
+    }
+    public void setNightPositions(){
+        playerSprite.setLayoutX(101.0);
+        playerSprite.setLayoutY(317.0);
+        playerHealth.setLayoutX(45.0);
+        playerHealth.setLayoutY(254.0);
+        healthNumbers.setLayoutX(94);
+        healthNumbers.setLayoutY(248);
+        energy.setLayoutX(100);
+        energy.setLayoutY(225);
+        energySlash.setLayoutX(125);
+        energySlash.setLayoutY(225);
+        maxEnergy.setLayoutX(150);
+        maxEnergy.setLayoutY(225);
+        playerBlockBox.setLayoutX(254);
+        playerBlockBox.setLayoutY(300);
+        enemyBlockBox.setLayoutX(360);
+        enemyBlockBox.setLayoutY(300);
+        enemyContainer.setLayoutX(451);
+        enemyContainer.setLayoutY(285);
+        background.setImage(new Image(getClass().getResource("/BattleBackground800x600.png").toExternalForm()));
+        background.setFitHeight(576);
     }
 }

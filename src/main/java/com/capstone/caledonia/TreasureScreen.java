@@ -20,6 +20,7 @@ public class TreasureScreen extends AnchorPane {
         loader.setRoot(this);
         loader.setController(this);
         loader.load();
+
         bindViewModel();
         Animations.fadeIn(this).play();
     }
