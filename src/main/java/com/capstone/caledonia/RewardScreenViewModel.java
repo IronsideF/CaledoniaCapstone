@@ -47,6 +47,7 @@ public class RewardScreenViewModel {
     }
     public void collectRewardCard(int index){
             game.player.getPermaDeck().addCard(rawRewards.get(index));
+            game.player.getPermaDeck().sortDeck();
     }
     public AnchorPane handleNodeChange()throws Exception{
         return game.advanceToNextNode();

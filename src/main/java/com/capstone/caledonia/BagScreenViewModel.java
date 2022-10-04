@@ -20,6 +20,7 @@ public class BagScreenViewModel {
     }
     public void moveCardToDeck(int index){
         game.moveCardFromBagToDeck(index);
+        game.player.getPermaDeck().sortDeck();
 
     }
 }
