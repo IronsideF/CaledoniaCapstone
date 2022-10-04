@@ -20,9 +20,25 @@ public class VictoryScreenViewModel {
     }
 
     public AnchorPane restartGame()throws Exception{
-        game.resetInstance();
-        return game.gameMap.getCurrentNode().buildView();
+        if (game.player.getDead()) {
+            game.resetInstance();
+            return game.gameMap.getCurrentNode().buildView();
+        } else {
+            game.nextGame();
+            game.advanceToNextNode();
+            return game.gameMap.getCurrentNode().buildView();
+        }
     }
+
+//    public AnchorPane nextGame()throws Exception{
+//        if(game.player.getDead()) {
+//            setDetails("You have died, and you cannot carry on!");
+//        } else {
+//            game.nextGame();
+//            game.advanceToNextNode();
+//            return game.gameMap.getCurrentNode().buildView();
+//        }
+//    }
 
     public String getDetails() {
         return details.get();
