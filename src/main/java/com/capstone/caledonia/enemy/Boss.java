@@ -9,16 +9,16 @@ import java.util.Arrays;
 
 public class Boss extends Enemy{
 
-    public Boss() {
-        super(11);
-        this.attacks = generateAttacks();
+    public Boss(int bonus) {
+        super(bonus);
+        this.attacks = generateAttacks(bonus);
         this.enemySprite = new Image(getClass().getResource("/BossIdle.gif").toExternalForm());
     }
 
-    public ArrayList<Attack> generateAttacks() {
-        Attack attack1 = new Attack(15, EffectType.DAMAGE, 0);
-        Attack attack2 = new Attack(7, EffectType.HEAL, 10);
-        Attack attack3 = new Attack(10, EffectType.ARMOUR, 7);
+    public ArrayList<Attack> generateAttacks(int bonus) {
+        Attack attack1 = new Attack(15 + (int)(0.5*bonus), EffectType.DAMAGE, 0);
+        Attack attack2 = new Attack(7 + (int) (0.5 * bonus), EffectType.HEAL, 10 + (int)(0.5 * bonus));
+        Attack attack3 = new Attack(10 + (int)(0.5 * bonus), EffectType.ARMOUR, 7 + (int)(0.5*bonus));
         return new ArrayList<>(Arrays.asList(attack1, attack2, attack3));
     }
 //    public void attackPlayer(Player  player) {
@@ -31,5 +31,9 @@ public class Boss extends Enemy{
     public void setIntent(){
         addToIntent(attacks.get((int)(Math.random() * this.attacks.size())));
         addToIntent(attacks.get((int)(Math.random() * this.attacks.size())));
+    }
+
+    public void clearIntent() {
+        this.intent.clear();
     }
 }

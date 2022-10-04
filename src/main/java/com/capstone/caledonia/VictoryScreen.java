@@ -15,6 +15,7 @@ public class VictoryScreen extends AnchorPane {
     @FXML private Text victoryMessage;
     @FXML private Button quit;
     @FXML private Button playAgain;
+    @FXML private Button nextGame;
     @FXML private Text detailsMessage;
     @FXML private Text treasureMessage;
 

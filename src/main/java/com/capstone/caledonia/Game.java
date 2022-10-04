@@ -2,6 +2,7 @@ package com.capstone.caledonia;
 
 import com.capstone.caledonia.card.ICard;
 import com.capstone.caledonia.map.GameMap;
+import com.capstone.caledonia.node.BossNode;
 import com.capstone.caledonia.node.EnemyNode;
 import com.capstone.caledonia.node.TreasureNode;
 import com.capstone.caledonia.player.Player;
@@ -57,6 +58,14 @@ public class Game {
         this.player = new Player();
         this.gameMap = new GameMap();
     }
+
+    public void nextGame(){
+        this.player.setMaxHealth(this.player.getMaxHealth() + 100);
+        this.player.healHealth(200);
+        this.gameMap.generateNextMap();
+        this.startBattle();
+    }
+
 
     public boolean endTurn(){
         EnemyNode node = (EnemyNode) gameMap.getCurrentNode();
