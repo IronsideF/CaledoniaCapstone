@@ -21,13 +21,16 @@ public class CardBuilder {
         ArrayList<CardDmg> result = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             int cost;
-            int damage = ((int)(Math.random() * 7) + 2 + bonus);
+            int damage = ((int)(Math.random() * 4) + 1 + bonus);
             damage -= (int)(Math.random()) * 3;
-            if (damage <= 2) {
+            if (damage <= 0) {
+                damage = 1;
+            }
+            if (damage <= 1) {
                 cost = 0;
-            } else if (damage > 3 && damage < 7) {
+            } else if (damage > 1 && damage < 7) {
                 cost = 1;
-            } else if (damage >= 7 && damage <= 11){
+            } else if (damage >= 7 && damage <= 10){
                 cost = 2;
             } else {
                 cost = 3;
@@ -48,13 +51,16 @@ public class CardBuilder {
                 effect = ((int)(Math.random() * 2) + 1 + (bonus / 3));
                 cost = effect;
             } else {
-                effect = ((int)(Math.random() * 7) + 2 + bonus);
+                effect = ((int)(Math.random() * 6) + 1 + bonus);
                 effect -= (int)(Math.random()) * 3;
-                if (effect <= 2) {
+                if (effect <= 0) {
+                    effect = 1;
+                }
+                if (effect <= 1) {
                     cost = 0;
-                } else if (effect > 3 && effect < 6) {
+                } else if (effect > 1 && effect < 7) {
                     cost = 1;
-                } else if (effect >= 6 && effect <= 10){
+                } else if (effect >= 7 && effect <= 11){
                     cost = 2;
                 } else {
                     cost = 3;

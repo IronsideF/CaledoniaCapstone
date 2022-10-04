@@ -16,6 +16,7 @@ public class TreasureScreenViewModel {
     TreasureScreenViewModel(){
         setPlayerSprite(game.player.getPlayerSprite());
         game.player.reset();
+        game.player.healHealth((bonus/3) * 10);
     }
 
     public Image getPlayerSprite() {
