@@ -36,11 +36,20 @@ public class GameMap {
         this.playerPosition = playerPosition;
     }
     private void generateGameMap(){
-        for (int i = 0; i < 10; i++) {
+        for (int i = this.playerPosition; i < this.playerPosition+10; i++) {
             if (i>1&&i%3==0){nodes.add(new TreasureNode());}
             else {nodes.add(new EnemyNode(i));}
         }
-        nodes.add(new BossNode());
+        nodes.add(new BossNode(11));
+    }
+
+    public void generateNextMap(){
+        nodes.add(new TreasureNode());
+        for (int i = this.playerPosition; i < this.playerPosition+10; i++) {
+            if (i>1&&i%3==0){nodes.add(new TreasureNode());}
+            else {nodes.add(new EnemyNode(i));}
+        }
+        nodes.add(new BossNode(this.playerPosition + 11));
     }
     public INode getCurrentNode(){
         return nodes.get(playerPosition);

@@ -284,6 +284,9 @@ public class BattleScreenViewModel {
     public boolean useCard(int index)throws Exception{
         game.useCard(index);
         updateUI();
+        if (node.getEnemy().getIsDead()) {
+            node.getEnemy().clearIntent();
+        }
         return node.getEnemy().getIsDead();
     }
 
@@ -305,10 +308,10 @@ public class BattleScreenViewModel {
             result.add(damageAmount);
             result.add(damageIcon);
             if (attack.getType()!= EffectType.DAMAGE){
-            Text effectAmount = new Text(String.valueOf(attack.getEffect()));
-            ImageView effectIcon = new ImageView(attack.getType().getTextIcon());
-            effectAmount.setFont(Font.font("Abaddon Bold", 18.0));
-            effectAmount.setFill(Color.WHITE);
+                Text effectAmount = new Text(String.valueOf(attack.getEffect()));
+                ImageView effectIcon = new ImageView(attack.getType().getTextIcon());
+                effectAmount.setFont(Font.font("Abaddon Bold", 18.0));
+                effectAmount.setFill(Color.WHITE);
                 result.add(effectAmount);
                 result.add(effectIcon);}}
         return result;

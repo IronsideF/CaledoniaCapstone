@@ -7,9 +7,9 @@ import javafx.scene.image.Image;
 
 public class BossNode extends EnemyNode{
 
-    public BossNode() {
+    public BossNode(int bonus) {
         super(0);
-        this.enemy = new Boss();
+        this.enemy = new Boss(bonus);
         this.treasure = 500;
         this.cardBuilder = new CardBuilder(1);
         this.cardGenerated = cardBuilder.buildCard();

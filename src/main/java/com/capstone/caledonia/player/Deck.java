@@ -36,5 +36,17 @@ public class Deck {
         return this.getCards().remove(index);
     }
 
+    public void sortDeck() {
+        for (int i = 0; i < this.deck.size(); i++) {
+            for (int j = 0; j < this.deck.size() - 1; j++) {
+                if (this.deck.get(j).getCost() > this.deck.get(j+1).getCost()) {
+                    ICard temp = this.deck.get(j);
+                    this.deck.set(j, this.deck.get(j+1));
+                    this.deck.set(j+1, temp);
+                }
+            }
+        }
+    }
+
 
 }

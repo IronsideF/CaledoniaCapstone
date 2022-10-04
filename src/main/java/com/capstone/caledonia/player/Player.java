@@ -160,7 +160,9 @@ public class Player {
             ICard card = builder.buildCard();
             result.add(card);
         }
-        this.permaDeck = new Deck(result);
+        Deck deck = new Deck(result);
+        deck.sortDeck();
+        this.permaDeck = deck;
     }
     public void generateDrawPile(){
         ArrayList<ICard> result = new ArrayList<>(permaDeck.getCards());
@@ -178,6 +180,8 @@ public class Player {
             }
 
     }
+
+
 
     public void drawCards(int amount) {
         while (amount > 0) {
