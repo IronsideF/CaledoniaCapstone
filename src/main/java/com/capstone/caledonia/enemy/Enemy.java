@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Enemy {
 
@@ -16,6 +17,7 @@ public class Enemy {
     protected ArrayList<Attack> attacks;
     protected Boolean isDead;
     protected ArrayList<Attack> intent;
+    protected ArrayList<Image> sprites = new ArrayList<>();
 
     public ArrayList<Attack> generateAttacks() {
         Attack attack1 = new Attack(9, EffectType.ARMOUR, 6);
@@ -48,7 +50,12 @@ public class Enemy {
         this.block = 0;
         this.attacks = generateAttacks(bonus);
         this.isDead = false;
-        this.enemySprite = new Image(getClass().getResource("/RedWormIdle.gif").toExternalForm());
+        this.sprites.add(new Image(getClass().getResource("/SkeletonIdle.gif").toExternalForm()));
+        this.sprites.add(new Image(getClass().getResource("/MushroomIdle.gif").toExternalForm()));
+        this.sprites.add(new Image(getClass().getResource("/GoblinIdle.gif").toExternalForm()));
+        this.sprites.add(new Image(getClass().getResource("/RedWormIdle.gif").toExternalForm()));
+        Random rand = new Random();
+        this.enemySprite = sprites.get(rand.nextInt(4));
         this.intent = new ArrayList<>();
     }
 

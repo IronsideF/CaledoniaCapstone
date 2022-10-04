@@ -17,6 +17,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class BattleScreenViewModel {
@@ -317,5 +318,10 @@ public class BattleScreenViewModel {
     }
     public boolean checkIfNight(){
         return game.gameMap.getPlayerPosition()>5;
+    }
+    public void setEnemyToOne(){
+        node.getEnemy().setHealth(1);
+        game.player.resetBlockAndEnergy();
+        updateUI();
     }
 }

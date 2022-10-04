@@ -74,7 +74,7 @@
             </Text>
          </children>
       </HBox>
-      <Button fx:id="nextScreen" layoutX="302.0" layoutY="116.0" mnemonicParsing="false" onAction="#onNextScreenClick" text="Next Screen" />
+      <Button fx:id="nextScreen" layoutX="558.0" layoutY="14.0" mnemonicParsing="false" onAction="#onNextScreenClick" text="Cheat" />
       <Text fx:id="treasureCount" fill="WHITE" layoutX="175.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100">
          <font>
             <Font name="Abaddon Bold Regular" size="18.0" />
@@ -125,7 +125,7 @@
             <Font name="Abaddon Bold Regular" size="25.0" />
          </font>
       </Text>
-      <VBox fx:id="enemyContainer" alignment="BOTTOM_CENTER" layoutX="585.0" layoutY="280.0">
+      <VBox fx:id="enemyContainer" alignment="BOTTOM_CENTER" layoutX="585.0" layoutY="237.0">
          <children>
             <HBox fx:id="enemyIntentBox" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" />
             <StackPane>
